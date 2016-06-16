@@ -1,0 +1,14 @@
+<div class="debate show controller container">
+  <div class="head">
+    <h1><%= @debate.title %></h1>
+    <p class="description"><%= @debate.description %></p>
+  </div>
+
+  <div class="container pro-arg col-md-8">
+    <%= link_to "Create new argument for", new_argument(side: "pro") %>
+  </div>
+
+  <div class="con-arg col-md-8">
+    <%= link_to "Create new argument against", new_argument(side: "con") %>
+  </div>
+</div>

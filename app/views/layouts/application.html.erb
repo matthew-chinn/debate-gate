@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DebateGate</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if flash[:success] %>
+    <div class="flash success">
+      <p><%= flash[:success] %></p>
+    </div>
+  <% elsif flash[:danger] %>
+    <div class="flash danger">
+      <p><%= flash[:danger] %></p>
+    </div>
+  <% end %>
+
+  <div class="header">
+    <h1>DebateGate</h1>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div class="debate new controller container">
+  <div class="errors">
+    <% if @created_debate and @created_debate.errors.any? %>
+      <ul>
+      <% @created_debate.errors.full_messages.each do |e| %>
+          <li><%= e %></li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <%= form_for @new_debate do |f| %>
+    <%= f.label :title %>:
+    <%= f.text_field :title %>
+
+    <%= f.label :description%>:
+    <%= f.text_field :description %>
+
+    <!-- change creator id when users created -->
+    <%= hidden_field :debate, :creator_id, value: 1 %>
+    <%= f.submit %>
+  <% end %>
+</div>

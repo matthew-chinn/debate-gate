@@ -1,0 +1,32 @@
+class DebatesController < ApplicationController
+  def index
+  end
+
+  def new
+    @new_debate = Debate.new
+  end
+
+  def create
+    @created_debate = Debate.create(debate_params)
+
+    if @created_debate.errors.any?
+      flash[:danger] = "New debate could not be made"
+      @new_debate = Debate.new
+      render 'new'
+    else
+      flash[:success] = "Debate created successfully"
+      redirect_to debate_path(@created_debate)
+    end
+
+  end
+
+  def show
+    @debate = Debate.find(params[:id])
+    
+  end
+
+  private
+  def debate_params
+    params.require(:debate).permit(:title, :description, :creator_id)
+  end
+end
