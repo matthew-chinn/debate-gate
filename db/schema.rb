@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616210407) do
+ActiveRecord::Schema.define(version: 20160616213016) do
 
   create_table "arguments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "title"
+    t.integer  "creator_id"
+    t.boolean  "proponent"
+    t.string   "description"
+    t.integer  "debate_id"
   end
 
   create_table "debates", force: :cascade do |t|

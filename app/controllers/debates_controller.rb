@@ -11,7 +11,7 @@ class DebatesController < ApplicationController
 
     if @created_debate.errors.any?
       flash[:danger] = "New debate could not be made"
-      @new_debate = Debate.new
+      @new_debate = @created_debate
       render 'new'
     else
       flash[:success] = "Debate created successfully"
@@ -22,7 +22,8 @@ class DebatesController < ApplicationController
 
   def show
     @debate = Debate.find(params[:id])
-    
+    @pros = Argument.pro_arguments_for(@debate.id)
+    @cons = Argument.con_arguments_for(@debate.id)
   end
 
   private

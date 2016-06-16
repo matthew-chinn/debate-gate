@@ -1,0 +1,33 @@
+<div class="arguments new controller container">
+  <div class="errors">
+    <% if @created_arg and @created_arg.errors.any? %>
+      <ul>
+      <% @created_arg.errors.full_messages.each do |e| %>
+          <li><%= e %></li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <% if @pro %>
+    <h2>New argument for <%= @debate.title %></h2>
+  <% else %>
+    <h2>New argument against <%= @debate.title %></h2>
+  <% end %>
+
+  <%= form_for @new_arg do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :description%>
+    <%= f.text_field :description %>
+
+    <!-- change creator id when users created -->
+    <%= hidden_field :argument, :creator_id, value: 1 %>
+    <%= hidden_field :argument, :debate_id, value: @debate_id %>
+    <%= hidden_field :argument, :proponent, value: @pro %>
+
+    <%= f.submit %>
+  <% end %>
+
+</div>

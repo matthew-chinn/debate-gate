@@ -4,11 +4,24 @@
     <p class="description"><%= @debate.description %></p>
   </div>
 
-  <div class="container pro-arg col-md-8">
-    <%= link_to "Create new argument for", new_argument(side: "pro") %>
+  <div class="container pro-arg col-md-6">
+    <!-- TODO: title, preview description, link -->
+    <ol class="pros list">
+      <% @pros.each do |p| %>
+        <li><%= p.title %></li>
+      <% end %>
+    </ol>
+
+    <%= link_to "Create new argument for", new_argument_path(id: @debate, side: "pro") %>
   </div>
 
-  <div class="con-arg col-md-8">
-    <%= link_to "Create new argument against", new_argument(side: "con") %>
+  <div class="con-arg col-md-6">
+    <ol class="cons list">
+      <% @cons.each do |c| %>
+        <li><%= c.title %></li>
+      <% end %>
+    </ol>
+
+    <%= link_to "Create new argument against", new_argument_path(id: @debate, side: "con") %>
   </div>
 </div>
