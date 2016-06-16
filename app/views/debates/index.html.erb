@@ -1,4 +1,10 @@
 <div class="debate index controller container">
+  <ol class="debates list">
+  <% @debates.each do |d| %>
+      <li><%= d.title %></li>
+  <% end %>
+  </ol>
+
   <%= link_to "Create new debate", new_debate_path %>
 </div>
 

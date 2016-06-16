@@ -23,8 +23,10 @@
 
 <%= yield %>
 
-<%= params.each do |m| %>
-  <p><%= m %></p>
-<% end %>
+<div class="footer">
+  <%= params.each do |m| %>
+    <p><%= m %></p>
+  <% end %>
+</div>
 </body>
 </html>
