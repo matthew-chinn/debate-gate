@@ -28,6 +28,10 @@ class ArgumentsController < ApplicationController
     end
   end
 
+  def show
+    @arg = Argument.find(params[:id])
+  end
+
   private
   def arg_params
     params.require(:argument).permit(:title, :description, :creator_id,

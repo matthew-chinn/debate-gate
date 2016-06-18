@@ -1,0 +1,12 @@
+@import "components/fonts";
+.argument.show{
+  pre{
+    margin: 8px 0;
+    padding: 0;
+    border: 0px;
+    background-color: white;
+    width: 70%;
+    font-size: initial;
+    font-family: $primary-font;
+  }
+}

@@ -1,17 +1,26 @@
+@import "components/fonts";
 .debate.show{
-    .head{
-        * {
-            display: inline-block;
-        }
-        h1{
-            font-size: 20px;
-        }
+  .head{
+    h1{
+      font-size: 25px;
     }
 
-    text-align: center;
-    margin: 8px 0;
-
-    ol{
-        list-style-position: inside;
+    pre{
+      margin: 8px auto;
+      padding: 0;
+      background-color: white;
+      border: 1px solid black;
+      width: 70%;
+      font-size: initial;
+      font-family: $primary-font;
     }
+  }
+
+  text-align: center;
+  margin: 8px 0;
+
+  ol{
+    list-style-position: inside;
+  }
+
 }
