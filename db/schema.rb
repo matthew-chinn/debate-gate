@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616213016) do
+ActiveRecord::Schema.define(version: 20160618230227) do
+
+  create_table "argument_counters", force: :cascade do |t|
+    t.integer "argument_id"
+    t.integer "counter_id"
+  end
+
+  create_table "argument_supporters", force: :cascade do |t|
+    t.integer "argument_id"
+    t.integer "supporter_id"
+  end
 
   create_table "arguments", force: :cascade do |t|
     t.datetime "created_at",  null: false

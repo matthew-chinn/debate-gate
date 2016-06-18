@@ -30,6 +30,8 @@ class ArgumentsController < ApplicationController
 
   def show
     @arg = Argument.find(params[:id])
+    @counter_arguments = @arg.counter_arguments
+    @supporter_arguments = @arg.supporting_arguments 
   end
 
   private

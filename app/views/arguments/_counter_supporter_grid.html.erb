@@ -1,0 +1,9 @@
+<div class="container <%=type%> arguments col-md-6">
+  <% type[0] = type[0].capitalize %>
+  <h3><%=type%> Arguments</h3> 
+  <ol>
+  <% arguments.each do |a| %>
+    <li><%= link_to a.title, argument_path(a) %></li>
+  <% end %>
+  </ol>
+</div>

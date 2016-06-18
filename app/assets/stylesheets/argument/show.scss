@@ -9,4 +9,12 @@
     font-size: initial;
     font-family: $primary-font;
   }
+
+  .arguments{
+    text-align: center;
+  }
+
+  ol{
+    list-style-position: inside;
+  }
 }

@@ -1,4 +1,9 @@
 <div class="container controller argument show">
   <h2><%= @arg.title %></h2>
   <pre><%= @arg.description %></pre>
+
+  <%= render partial: "counter_supporter_grid", locals: {type: "supporter", 
+                                                         arguments: @supporter_arguments} %>
+  <%= render partial: "counter_supporter_grid", locals: {type: "counter", 
+                                                         arguments: @counter_arguments} %>
 </div>
