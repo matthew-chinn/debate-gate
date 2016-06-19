@@ -6,4 +6,7 @@
     <li><%= link_to a.title, argument_path(a) %></li>
   <% end %>
   </ol>
+  <%= link_to "Create new #{type} argument", new_argument_path(id: @arg.debate_id,
+                                                               type: type, argument_id: @arg.id ) %>
+  
 </div>

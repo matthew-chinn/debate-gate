@@ -15,6 +15,11 @@
     <h2>New argument against <%= @debate.title %></h2>
   <% end %>
 
+  <% if @ref_argument_id and @ref_type %>
+    <h4><%= @ref_type %> to <%= link_to @ref_argument.title,
+      argument_path(@ref_argument) %></h4>
+  <% end %>
+
   <%= form_for @new_arg do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -26,6 +31,8 @@
     <%= hidden_field :argument, :creator_id, value: 1 %>
     <%= hidden_field :argument, :debate_id, value: @debate_id %>
     <%= hidden_field :argument, :proponent, value: @pro %>
+    <%= hidden_field :ref, :type, value: @ref_type %>
+    <%= hidden_field :ref, :id, value: @ref_argument_id %>
 
     <%= f.submit %>
   <% end %>

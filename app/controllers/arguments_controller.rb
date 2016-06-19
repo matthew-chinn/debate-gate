@@ -2,7 +2,12 @@ class ArgumentsController < ApplicationController
   def new
     @debate_id = params[:id]
     @debate = Debate.find(@debate_id)
-    @pro
+
+    #for counter and supporter arguments
+    @ref_argument_id = params[:argument_id]
+    @ref_argument = Argument.find(@ref_argument_id)
+    @ref_type = params[:type]
+
     if params[:side] == "pro"
       @pro = true
     elsif params[:side] == "con"
@@ -23,8 +28,16 @@ class ArgumentsController < ApplicationController
       render 'new'
     else
       flash[:success] = "Argument created successfully"
-      params[:id] = @created_arg.debate_id
-      redirect_to debate_path(@created_arg.debate_id)
+      if params[:ref][:type]
+        if params[:ref][:type] == "Supporter"
+          Argument.find(params[:ref][:id]).supporting_arguments << @created_arg
+        else
+          Argument.find(params[:ref][:id]).counter_arguments << @created_arg
+        end
+        redirect_to argument_path(params[:ref][:id]) and return #original argument
+      end
+
+      redirect_to debate_path(@created_arg.debate_id) and return #debate
     end
   end
 
@@ -37,6 +50,6 @@ class ArgumentsController < ApplicationController
   private
   def arg_params
     params.require(:argument).permit(:title, :description, :creator_id,
-                                     :debate_id, :proponent)
+                                     :debate_id, :proponent )
   end
 end
