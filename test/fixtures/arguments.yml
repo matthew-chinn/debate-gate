@@ -4,8 +4,13 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+
+<% 100.times do |n| %>
+arg_<%=n%>: 
+    title: <%= "title_#{n}" %>
+    creator_id: <%= n % 10 %>
+    proponent: <%= n < 100 ? true : false %>
+    description: <%= "description_#{n}" %>
+    debate_id: <%= n % 10 %>
+    links: "---\n- \"google.com\\r\"\n- yahoo.com\n" 
+<% end %>

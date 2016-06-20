@@ -4,8 +4,10 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+
+<% 10.times do |n| %>
+debate_<%= n %>:
+    title: <%= "title_#{n}" %>
+    creator_id: <%= n % 10 %>
+    description: <%= "description_#{n}" %>
+<% end %>
