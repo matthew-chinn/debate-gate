@@ -1,4 +1,6 @@
 class ArgumentsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+
   def new
     @debate_id = params[:id]
     @debate = Debate.find(@debate_id)
