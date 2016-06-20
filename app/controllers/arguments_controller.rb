@@ -8,12 +8,15 @@ class ArgumentsController < ApplicationController
       @ref_argument_id = params[:argument_id]
       @ref_argument = Argument.find(@ref_argument_id)
       @ref_type = params[:type]
-    end
 
-    if params[:side] == "pro"
-      @pro = true
-    elsif params[:side] == "con"
-      @pro = false
+      @pro = @ref_argument.proponent
+      @pro = @ref_type == "Supporter" ? @pro : !@pro #if counter argument, flip 
+    else
+      if params[:side] == "pro"
+        @pro = true
+      elsif params[:side] == "con"
+        @pro = false
+      end
     end
     @new_arg = Argument.new
   end
