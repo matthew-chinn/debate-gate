@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160618230227) do
+ActiveRecord::Schema.define(version: 20160619234912) do
 
   create_table "argument_counters", force: :cascade do |t|
     t.integer "argument_id"
@@ -31,7 +31,10 @@ ActiveRecord::Schema.define(version: 20160618230227) do
     t.boolean  "proponent"
     t.string   "description"
     t.integer  "debate_id"
+    t.string   "links"
   end
+
+  add_index "arguments", ["links"], name: "index_arguments_on_links"
 
   create_table "debates", force: :cascade do |t|
     t.string   "title"

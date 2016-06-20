@@ -22,19 +22,19 @@ class ArgumentsController < ApplicationController
     @debate = Debate.find(@debate_id)
     @pro = @created_arg.proponent
 
+    @links = get_links 
+
     if @created_arg.errors.any?
       flash[:danger] = "New argument could not be made"
       @new_arg = @created_arg
       render 'new'
-    else
+    else #successful creation
       flash[:success] = "Argument created successfully"
-      if params[:ref][:type]
-        if params[:ref][:type] == "Supporter"
-          Argument.find(params[:ref][:id]).supporting_arguments << @created_arg
-        else
-          Argument.find(params[:ref][:id]).counter_arguments << @created_arg
-        end
+
+      @created_arg.update_attribute(:links, @links)
+      if supporting_or_counter_arguments?
         redirect_to argument_path(params[:ref][:id]) and return #original argument
+        #render 'new'
       end
 
       redirect_to debate_path(@created_arg.debate_id) and return #debate
@@ -51,5 +51,28 @@ class ArgumentsController < ApplicationController
   def arg_params
     params.require(:argument).permit(:title, :description, :creator_id,
                                      :debate_id, :proponent )
+  end
+
+  def supporting_or_counter_arguments?
+    if params[:ref][:type]
+      arg = Argument.find(params[:ref][:id])
+      if params[:ref][:type] == "Supporter"
+        arg.supporting_arguments << @created_arg
+        @created_arg.proponent = arg.proponent
+        @created_arg.save
+      else
+        arg.counter_arguments << @created_arg
+        @created_arg.proponent = !arg.proponent
+        @created_arg.save
+      end
+      return true
+    end
+
+    return false
+  end
+
+
+  def get_links
+    params[:argument][:links].split("\n")
   end
 end

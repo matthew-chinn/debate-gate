@@ -27,6 +27,9 @@
     <%= f.label :description%>
     <%= f.text_area :description %>
 
+    <%= f.label :links %><p>*Separate by new line</p>
+    <%= f.text_area :links %>
+
     <!-- change creator id when users created -->
     <%= hidden_field :argument, :creator_id, value: 1 %>
     <%= hidden_field :argument, :debate_id, value: @debate_id %>
