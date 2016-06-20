@@ -9,11 +9,7 @@
     <% end %>
   </div>
 
-  <% if @pro %>
-    <h2>New argument for <%= @debate.title %></h2>
-  <% else %>
-    <h2>New argument against <%= @debate.title %></h2>
-  <% end %>
+  <h2>New argument <%= @pro ? "for" : "against"%> <%= link_to @debate.title, debate_path(@debate) %></h2>
 
   <% if @ref_argument_id and @ref_type %>
     <h4><%= @ref_type %> to <%= link_to @ref_argument.title,
