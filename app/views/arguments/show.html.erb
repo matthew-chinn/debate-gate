@@ -1,6 +1,20 @@
 <div class="container controller argument show">
   <h2><%= @arg.title %></h2>
   <pre><%= @arg.description %></pre>
+  <% if @links.count > 0 %>
+    <h4>References:</h4>
+    <ul>
+      <% @links.each do |l| %>
+        <!-- to make link work -->
+        <% if l[0..3] != "http" %>
+          <% link = "https://#{l}" %>
+        <% else link = l %>
+        <% end %>
+
+        <li><a href="<%= link %>" target="_blank"><%= l %></a></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <%= render partial: "counter_supporter_grid", locals: {type: "supporter", 
                                                          arguments: @supporter_arguments} %>

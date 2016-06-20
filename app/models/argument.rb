@@ -2,6 +2,7 @@ class Argument < ActiveRecord::Base
   belongs_to :debate
   validates :title, presence: true
   validates :description, presence: true
+  serialize :links
 
   has_and_belongs_to_many :counter_arguments, class_name: "Argument",
                                               join_table: "argument_counters",

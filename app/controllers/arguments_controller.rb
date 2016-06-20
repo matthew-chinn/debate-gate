@@ -4,9 +4,11 @@ class ArgumentsController < ApplicationController
     @debate = Debate.find(@debate_id)
 
     #for counter and supporter arguments
-    @ref_argument_id = params[:argument_id]
-    @ref_argument = Argument.find(@ref_argument_id)
-    @ref_type = params[:type]
+    if params[:argument_id]
+      @ref_argument_id = params[:argument_id]
+      @ref_argument = Argument.find(@ref_argument_id)
+      @ref_type = params[:type]
+    end
 
     if params[:side] == "pro"
       @pro = true
@@ -22,7 +24,7 @@ class ArgumentsController < ApplicationController
     @debate = Debate.find(@debate_id)
     @pro = @created_arg.proponent
 
-    @links = get_links 
+    @links = get_links_from_params 
 
     if @created_arg.errors.any?
       flash[:danger] = "New argument could not be made"
@@ -33,7 +35,7 @@ class ArgumentsController < ApplicationController
 
       @created_arg.update_attribute(:links, @links)
       if supporting_or_counter_arguments?
-        redirect_to argument_path(params[:ref][:id]) and return #original argument
+        redirect_to argument_path(@created_arg) and return #new argument
         #render 'new'
       end
 
@@ -45,6 +47,8 @@ class ArgumentsController < ApplicationController
     @arg = Argument.find(params[:id])
     @counter_arguments = @arg.counter_arguments
     @supporter_arguments = @arg.supporting_arguments 
+    @links = @arg.links
+    @links ||= []
   end
 
   private
@@ -54,7 +58,7 @@ class ArgumentsController < ApplicationController
   end
 
   def supporting_or_counter_arguments?
-    if params[:ref][:type]
+    if params[:ref][:type] != ""
       arg = Argument.find(params[:ref][:id])
       if params[:ref][:type] == "Supporter"
         arg.supporting_arguments << @created_arg
@@ -72,7 +76,7 @@ class ArgumentsController < ApplicationController
   end
 
 
-  def get_links
-    params[:argument][:links].split("\n")
+  def get_links_from_params
+    params[:argument][:links].split("\n").delete_if{|elem| elem.blank?}
   end
 end
