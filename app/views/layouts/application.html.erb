@@ -21,6 +21,14 @@
 
   <div class="header">
     <h1>DebateGate</h1>
+    
+    <% if user_signed_in? %>
+      <div class="buttons">
+        <%= link_to "Edit Profile", edit_user_registration_path %>
+        <%= link_to "Logout", destroy_user_session_path, method: 'delete' %>
+      </div>
+    <% end %>
+
   </div>
 
 <%= yield %>
@@ -29,13 +37,12 @@
   <%= params.each do |m| %>
     <p><%= m %></p>
   <% end %>
-</div>
 
-<div class="footer buttons">
-  <%= link_to "Home", root_path %>
-  <%= link_to "View Debates", debates_path %>
-  <%= link_to "New Debate", new_debate_path %>
-  <%= link_to "Edit Profile", edit_user_registration_path if user_signed_in? %>
+  <div class="buttons">
+    <%= link_to "Home", root_path %>
+    <%= link_to "View Debates", debates_path %>
+    <%= link_to "New Debate", new_debate_path %>
+  </div>
 </div>
 
 </body>
