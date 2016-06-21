@@ -35,6 +35,7 @@
   <%= link_to "Home", root_path %>
   <%= link_to "View Debates", debates_path %>
   <%= link_to "New Debate", new_debate_path %>
+  <%= link_to "Edit Profile", edit_user_registration_path if user_signed_in? %>
 </div>
 
 </body>
