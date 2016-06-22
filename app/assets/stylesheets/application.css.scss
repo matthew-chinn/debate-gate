@@ -37,7 +37,9 @@ body{
 
     .buttons{
       display: inline-block;
-      float: right;
+      position: absolute;
+      top: 0px;
+      right: 0px;
 
       a{
         font-size: 20px;
