@@ -1,0 +1,19 @@
+@import "components/forms";
+
+$width : 380px;
+$height : 300px;
+
+.sessions.new{
+    @include centered_form($width, $height);
+    border: 3px solid;
+    border-radius: 10px;
+
+    input:not(#user_remember_me){
+        width: 100%;
+    }
+
+    h2{
+        margin: 16px;
+        text-align: center;
+    }
+}

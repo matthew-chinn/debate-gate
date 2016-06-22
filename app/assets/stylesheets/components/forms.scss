@@ -1,0 +1,9 @@
+@mixin centered_form($width, $height){
+  position: absolute;
+  width: $width;
+  height: $height;
+  top: 40%;
+  left: 50%;
+  margin: $height/-2 $width/-2;
+  padding: 16px;
+}

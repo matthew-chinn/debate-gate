@@ -1,5 +1,9 @@
 <div class="welcome index controller container">
-<%= link_to "Login", new_user_session_path %>
-<%= link_to "New User", new_user_registration_path %>
-<%= link_to "View Debates", debates_path %>
+  <div class="login-box">
+    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "New User", new_user_registration_path %>
+  </div>
+  <div class="options">
+  <%= link_to "View Debates", debates_path %>
+  </div>
 </div>

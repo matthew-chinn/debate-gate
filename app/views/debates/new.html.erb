@@ -9,15 +9,17 @@
     <% end %>
   </div>
 
-  <%= form_for @new_debate do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="form">
+    <%= form_for @new_debate do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
 
-    <%= f.label :description%>
-    <%= f.text_area :description %>
+      <%= f.label :description%>
+      <%= f.text_area :description %>
 
-    <!-- change creator id when users created -->
-    <%= hidden_field :debate, :creator_id, value: 1 %>
-    <%= f.submit %>
-  <% end %>
+      <!-- change creator id when users created -->
+      <%= hidden_field :debate, :creator_id, value: 1 %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>

@@ -3,7 +3,8 @@ class WelcomeController < ApplicationController
     if user_signed_in?
       render 'home'
     else
-      render 'index'
+      #render 'index'
+      redirect_to new_user_session_path
     end
   end
 end

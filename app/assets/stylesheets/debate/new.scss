@@ -1,5 +1,17 @@
+@import "components/forms";
+$form-width: 300px;
+$form-height: 200px;
+
 .debate.new{
   input, textarea{
     display: block;
+    width: 100%;
   }
+
+  .form{
+      width: $form-width;
+      height: $form-height;
+      @include centered_form($form-width, $form-height);
+  }
+
 }
