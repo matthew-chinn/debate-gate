@@ -7,6 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <div class="header">
+    <h1>DebateGate</h1>
+    
+    <% if user_signed_in? %>
+      <div class="buttons">
+        <%= link_to "Edit Profile", edit_user_registration_path, class:"btn" %>
+        <%= link_to "Logout", destroy_user_session_path, method: 'delete',
+          class:"btn" %>
+      </div>
+    <% end %>
+  </div>
+
   <% if flash[:success] or flash[:notice] %>
     <div class="flash success">
       <p><%= flash[:success] %></p>
@@ -19,29 +32,19 @@
     </div>
   <% end %>
 
-  <div class="header">
-    <h1>DebateGate</h1>
-    
-    <% if user_signed_in? %>
-      <div class="buttons">
-        <%= link_to "Edit Profile", edit_user_registration_path %>
-        <%= link_to "Logout", destroy_user_session_path, method: 'delete' %>
-      </div>
-    <% end %>
-
-  </div>
-
 <%= yield %>
 
 <div class="footer">
+  <!--
   <%= params.each do |m| %>
     <p><%= m %></p>
   <% end %>
+  -->
 
   <div class="buttons">
-    <%= link_to "Home", root_path %>
-    <%= link_to "View Debates", debates_path %>
-    <%= link_to "New Debate", new_debate_path %>
+    <%= link_to "Home", root_path, class: "btn" %>
+    <%= link_to "Browse Debates", debates_path, class: "btn" %>
+    <%= link_to "New Debate", new_debate_path, class: "btn" %>
   </div>
 </div>
 

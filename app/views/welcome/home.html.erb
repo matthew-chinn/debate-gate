@@ -1,4 +1,6 @@
 <div class="welcome home controller container">
-<%= link_to "View Debates", debates_path %>
-<%= link_to "Create new debate", new_debate_path %>
+  <div class="buttons">
+    <%= link_to "Browse Debates", debates_path, class: "btn" %>
+    <%= link_to "Create New Debate", new_debate_path, class: "btn" %>
+  </div>
 </div>

@@ -1,4 +1,5 @@
 @import "components/fonts";
+@import "components/colors";
 .argument.show{
   pre{
     margin: 8px 0;
@@ -16,5 +17,13 @@
 
   ol{
     list-style-position: inside;
+  }
+
+  .For-title{
+    color: $favor-color;
+  }
+
+  .Against-title{
+    color: $danger-color;
   }
 }

@@ -4,27 +4,9 @@
     <pre class="description"><%= @debate.description %></pre>
   </div>
 
-  <div class="container pro-arg col-md-6">
-    <!-- TODO: title, preview description, link -->
-    <ol class="pros list">
-      <% @pros.each do |p| %>
-        <li><%= link_to p.title, argument_path(p) %></li>
-      <% end %>
-    </ol>
+  <%= render partial: "arguments_grid", locals: {type: "pro", arguments: @pros } %>
 
-    <%= link_to "Create new argument for", new_argument_path(id: @debate, side: "pro") %>
-  </div>
-
-  <!-- eventually extract this and pro section into _arguments_grid.html.erb -->
-  <div class="container con-arg col-md-6">
-    <ol class="cons list">
-      <% @cons.each do |c| %>
-        <li><%= link_to c.title, argument_path(c) %></li>
-      <% end %>
-    </ol>
-
-    <%= link_to "Create new argument against", new_argument_path(id: @debate, side: "con") %>
-  </div>
+  <%= render partial: "arguments_grid", locals: {type: "con", arguments: @cons } %>
 
   <div class="footer buttons">
     <%= link_to "Back to Home", root_path %>

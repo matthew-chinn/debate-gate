@@ -1,5 +1,7 @@
 <div class="container controller argument show">
-<h1><%= @arg.proponent ? "For" : "Against" %> <%= link_to Debate.find(@arg.debate_id).title, debate_path(@arg.debate_id)%></h1>
+<% proponent = @arg.proponent ? "For" : "Against" %>
+<h1 class="<%=proponent%>-title"><%= proponent %> 
+<%= link_to Debate.find(@arg.debate_id).title, debate_path(@arg.debate_id)%></h1>
   <h2><%= @arg.title %></h2>
   <pre><%= @arg.description %></pre>
   <% if @links.count > 0 %>

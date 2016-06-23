@@ -1,0 +1,11 @@
+<div class="container <%=type%>-arg col-md-6">
+<!-- TODO: title, preview description, link -->
+<ol class="<%=type%> list">
+  <% arguments.each do |a| %>
+    <li><%= link_to a.title, argument_path(a) %></li>
+  <% end %>
+</ol>
+
+<% word = type == "pro" ? "for" : "against" %>
+<%= link_to "Create new argument #{word}", new_argument_path(id: @debate, side: "#{type}") %>
+</div>

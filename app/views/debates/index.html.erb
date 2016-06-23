@@ -1,4 +1,5 @@
 <div class="debate index controller container">
+<h2>All Debates</h2>
   <ol class="debates list">
   <% @debates.each do |d| %>
     <li><%= link_to d.title, debate_path(d) %></li>
