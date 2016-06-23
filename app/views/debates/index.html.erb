@@ -1,11 +1,20 @@
 <div class="debate index controller container">
 <h2>All Debates</h2>
-  <ol class="debates list">
-  <% @debates.each do |d| %>
-    <li><%= link_to d.title, debate_path(d) %></li>
-  <% end %>
-  </ol>
+<% if @debates.count > 0 %>
+<table>
+  <tr><td class="col-sm-4">Name</td><td class="col-sm-4">Activity within last
+      week</td><td class="col-sm-4">Activity all time</td></tr>
 
-  <%= link_to "Create new debate", new_debate_path %>
+  <% @debates.each do |d| %>
+    <tr>
+      <td class="col-sm-4"><%= link_to d.title, debate_path(d) %></td>
+      <td class="col-sm-4"><%= Argument.within_last_week_for(d.id).count %></td>
+      <td class="col-sm-4"><%= Argument.number_arguments_for(d.id) %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+
+  <%= link_to "Create new debate", new_debate_path, class:"btn" %>
 </div>
 

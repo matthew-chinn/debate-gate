@@ -24,6 +24,7 @@ $header-height:50px;
 body{
     margin: 0px;
     font-family: $primary-font;
+    font-size: 15px;
 
     a, a:hover{
         text-decoration: none;
@@ -117,5 +118,14 @@ body{
                 color: black;
             }
         }
+    }
+}
+
+.btn.submit{
+    margin: 4px 0px;
+    background-color: $button-color;
+    border: 1px solid;
+    &:hover{
+        background-color: $button-hover-color;
     }
 }

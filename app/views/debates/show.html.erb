@@ -4,9 +4,11 @@
     <pre class="description"><%= @debate.description %></pre>
   </div>
 
+  <div class="grid-container">
   <%= render partial: "arguments_grid", locals: {type: "pro", arguments: @pros } %>
 
   <%= render partial: "arguments_grid", locals: {type: "con", arguments: @cons } %>
+  </div>
 
   <div class="footer buttons">
     <%= link_to "Back to Home", root_path %>

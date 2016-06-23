@@ -19,4 +19,12 @@ class Argument < ActiveRecord::Base
   def self.con_arguments_for(id)
     Argument.where("debate_id = ? AND proponent = ?", id, false)
   end
+
+  def self.within_last_week_for(debate_id)
+    Argument.where("debate_id = ? AND updated_at > ?", debate_id, DateTime.now - 7.days)
+  end
+
+  def self.number_arguments_for(debate_id)
+    Argument.where("debate_id = ?", debate_id).count
+  end
 end
