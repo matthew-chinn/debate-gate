@@ -1,7 +1,8 @@
 <div class="container controller argument show">
 <% proponent = @arg.proponent ? "For" : "Against" %>
 <h1 class="<%=proponent%>-title"><%= proponent %> 
-<%= link_to Debate.find(@arg.debate_id).title, debate_path(@arg.debate_id)%></h1>
+<%= link_to Debate.find(@arg.debate_id).title, debate_path(@arg.debate_id)%>:</h1>
+<div class="main-chunk">
   <h2><%= @arg.title %></h2>
   <pre><%= @arg.description %></pre>
   <% if @links.count > 0 %>
@@ -18,6 +19,7 @@
       <% end %>
     </ul>
   <% end %>
+</div>
 
   <%= render partial: "counter_supporter_grid", locals: {type: "supporter", 
                                                          arguments: @supporter_arguments} %>

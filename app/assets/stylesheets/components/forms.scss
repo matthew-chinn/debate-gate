@@ -6,4 +6,12 @@
   left: 50%;
   margin: $height/-2 $width/-2;
   padding: 16px;
+
+  input{
+      width: 100%;
+  }
+  
+  h2{
+      text-align: center;
+  }
 }

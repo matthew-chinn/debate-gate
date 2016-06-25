@@ -1,6 +1,9 @@
 @import "components/fonts";
 .debate.show{
   .head{
+    width: 70%;
+    margin: 0 auto;
+
     h1{
       font-size: 25px;
     }
@@ -8,9 +11,6 @@
     pre{
       margin: 8px auto;
       padding: 0;
-      background-color: white;
-      border: 1px solid black;
-      width: 70%;
       font-size: initial;
       font-family: $primary-font;
     }

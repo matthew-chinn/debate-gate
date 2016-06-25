@@ -1,0 +1,8 @@
+@import "components/forms";
+    
+$width : 380px;
+$height : 250px;
+
+.password.new{
+    @include centered_form($width, $height);
+}

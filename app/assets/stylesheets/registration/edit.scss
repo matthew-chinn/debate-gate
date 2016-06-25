@@ -1,0 +1,9 @@
+@import "components/forms";
+$width : 400px;
+$height : 600px;
+
+.registration.edit{
+    @include centered_form($width, $height);
+
+    
+}

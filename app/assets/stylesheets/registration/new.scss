@@ -1,0 +1,8 @@
+@import "components/forms";
+
+$width : 380px;
+$height : 430px;
+
+.registration.new{
+    @include centered_form($width, $height);
+}

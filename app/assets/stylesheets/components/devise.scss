@@ -1,0 +1,19 @@
+@import "components/colors";
+//Misc devise styles
+
+.devise-links{
+  margin: 4px 0px;
+  a{
+    margin: 4px;
+  }
+}
+
+.devise .btn{
+      border: 2px solid black;
+      background-color: white;
+      margin-top: 8px;
+
+      &:hover{
+        background-color: $login-hover-color;
+      }
+}

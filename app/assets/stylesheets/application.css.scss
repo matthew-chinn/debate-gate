@@ -76,6 +76,10 @@ body{
         margin: 0px;
         display: inline-block;
         line-height: $header-height;
+
+        .title{
+          color: white;
+        }
     }
 
     .buttons{
@@ -128,4 +132,12 @@ body{
     &:hover{
         background-color: $button-hover-color;
     }
+}
+
+pre{
+    white-space: pre-wrap;
+    word-break: normal;
+    word-wrap: normal;
+    border: 0px;
+    background-color: white;
 }

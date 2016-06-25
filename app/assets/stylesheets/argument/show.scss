@@ -4,9 +4,6 @@
   pre{
     margin: 8px 0;
     padding: 0;
-    border: 0px;
-    background-color: white;
-    width: 70%;
     font-size: initial;
     font-family: $primary-font;
   }
@@ -19,11 +16,24 @@
     list-style-position: inside;
   }
 
-  .For-title{
-    color: $favor-color;
+  h1{
+      text-align: center;
+      .For-title{
+        color: $favor-color;
+      }
+
+      .Against-title{
+        color: $danger-color;
+      }
   }
 
-  .Against-title{
-    color: $danger-color;
+  .main-chunk{
+      width: 60%;
+      margin: 0 auto;
+
+      h2{
+          margin: 10px 0px;
+          text-align: center;
+      }
   }
 }
