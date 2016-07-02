@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621192307) do
+ActiveRecord::Schema.define(version: 20160702003915) do
 
   create_table "argument_counters", force: :cascade do |t|
     t.integer "argument_id"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20160621192307) do
     t.string   "description"
     t.integer  "debate_id"
     t.string   "links"
+    t.integer  "likes"
+    t.integer  "dislikes"
   end
 
   create_table "debates", force: :cascade do |t|

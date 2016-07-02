@@ -23,24 +23,30 @@
     list-style-position: inside;
   }
 
-  h1{
+    h1{
       text-align: center;
-      &.For-title{
-        color: $favor-color;
-      }
+        &.For-title{
+          color: $favor-color;
+        }
 
-      &.Against-title{
-        color: $danger-color;
-      }
-  }
+        &.Against-title{
+          color: $danger-color;
+        }
+    }
 
   .main-chunk{
       width: 60%;
       margin: 0 auto;
 
+
+      .like-buttons{
+        text-align: center;
+        margin: 4px;
+      }
+
       h2{
+        text-align: center;
           margin: 10px 0px;
-          text-align: center;
       }
   }
 }

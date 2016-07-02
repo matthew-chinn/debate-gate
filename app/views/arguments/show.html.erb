@@ -1,9 +1,17 @@
 <div class="container controller argument show">
 <% proponent = @arg.proponent ? "For" : "Against" %>
-<h1 class="<%=proponent%>-title"><%= proponent %> 
-<%= link_to Debate.find(@arg.debate_id).title, debate_path(@arg.debate_id)%>:</h1>
+
+  <h1 class="<%=proponent%>-title"><%= proponent %> 
+  <%= link_to Debate.find(@arg.debate_id).title, debate_path(@arg.debate_id)%>:</h1>
+
 <div class="main-chunk">
+
   <h2><%= @arg.title %></h2>
+  <div class="like-buttons">
+    <%= image_tag( "icons/up.svg", size: "30x30", class: "thumb-up" ) %>
+    <%= image_tag( "icons/down.svg", size: "30x30", class: "thumb-down" ) %>
+  </div>
+
 
   <div class="subtitle">
   <p class="creator"><%= link_to User.find(@arg.creator_id).username, user_path(@arg.creator_id) %></p>

@@ -1,0 +1,37 @@
+var thumb_up, thumb_down;
+var up_clicked = false, down_clicked = false;
+$(document).ready(function(){
+    thumb_up = $(".thumb-up");
+    thumb_down = $(".thumb-down");
+    thumb_up.hover( enterThumbUp, exitThumbUp );
+    thumb_down.hover( enterThumbDown, exitThumbDown );
+
+    thumb_up.click( clickThumbUp );
+    thumb_down.click( clickThumbDown );
+});
+
+<% ["up", "down"].each do |thumb| %>
+function enterThumb<%= thumb[0].capitalize + thumb[1..-1] %>(){
+  if(!<%= thumb %>_clicked)
+    thumb_<%= thumb %>.attr("src", "<%=asset_path("icons/#{thumb}-color.svg")%>" );
+}
+
+function exitThumb<%= thumb[0].capitalize + thumb[1..-1] %>(){
+  if(!<%= thumb %>_clicked)
+    thumb_<%= thumb %>.attr("src", "<%= asset_path("icons/#{thumb}.svg") %>");
+}
+
+function clickThumb<%= thumb[0].capitalize + thumb[1..-1]%>(){
+  <% opposite = thumb == "up" ? "down" : "up" %> //uncheck the other one if it is checked
+  if( <%= opposite %>_clicked ){
+    <%= opposite %>_clicked = false;
+    thumb_<%= opposite %>.attr("src", "<%= asset_path("icons/#{opposite}.svg") %>");
+  }
+
+  <%= thumb %>_clicked = !<%= thumb %>_clicked;
+  if( <%= thumb %>_clicked )
+    thumb_<%= thumb %>.attr("src", "<%=asset_path("icons/#{thumb}-color.svg")%>" );
+  else
+    thumb_<%= thumb %>.attr("src", "<%=asset_path("icons/#{thumb}.svg")%>" );
+}
+<% end %>

@@ -119,6 +119,13 @@ body{
             }
         }
     }
+
+    .citation{
+      display: inline-block;
+      font-size: 10px;
+      position: absolute;
+      bottom: 0px;
+    }
 }
 
 .btn.submit{
