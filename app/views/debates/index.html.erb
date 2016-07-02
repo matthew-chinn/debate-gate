@@ -9,7 +9,7 @@
     <tr>
       <td class="col-sm-4"><%= link_to d.title, debate_path(d) %></td>
       <td class="col-sm-4"><%= Argument.within_last_week_for(d.id).count %></td>
-      <td class="col-sm-4"><%= Argument.number_arguments_for(d.id) %></td>
+      <td class="col-sm-4"><%= Argument.arguments_for(d.id).count %></td>
     </tr>
   <% end %>
 </table>

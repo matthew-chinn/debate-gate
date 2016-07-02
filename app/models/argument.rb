@@ -24,7 +24,7 @@ class Argument < ActiveRecord::Base
     Argument.where("debate_id = ? AND updated_at > ?", debate_id, DateTime.now - 7.days)
   end
 
-  def self.number_arguments_for(debate_id)
-    Argument.where("debate_id = ?", debate_id).count
+  def self.arguments_for(debate_id)
+    Argument.where(debate_id: debate_id)
   end
 end

@@ -8,8 +8,11 @@
     font-family: $primary-font;
   }
 
-  .creator{
+  .subtitle{
     text-align: center;
+    p{
+      display: inline-block;
+    }
   }
 
   .arguments{
