@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :debates
   resources :arguments
 
+  get 'user/:id' => 'user#show', as: :user
+
   # Example resource route with options:
   #   resources :products do
   #     member do

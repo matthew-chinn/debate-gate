@@ -4,6 +4,7 @@
 <%= link_to Debate.find(@arg.debate_id).title, debate_path(@arg.debate_id)%>:</h1>
 <div class="main-chunk">
   <h2><%= @arg.title %></h2>
+  <p class="creator"><%= link_to User.find(@arg.creator_id).username, user_path(@arg.creator_id) %></p>
   <pre><%= @arg.description %></pre>
   <% if @links.count > 0 %>
     <h4>References:</h4>

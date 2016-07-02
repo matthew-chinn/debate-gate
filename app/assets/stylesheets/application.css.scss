@@ -25,10 +25,6 @@ body{
     margin: 0px;
     font-family: $primary-font;
     font-size: 15px;
-
-    a, a:hover{
-        text-decoration: none;
-    }
 }
 
 .controller.container{
@@ -128,7 +124,8 @@ body{
 .btn.submit{
     margin: 4px 0px;
     background-color: $button-color;
-    border: 1px solid;
+    border: 1px solid black;;
+    color: black;
     &:hover{
         background-color: $button-hover-color;
     }
@@ -140,4 +137,12 @@ pre{
     word-wrap: normal;
     border: 0px;
     background-color: white;
+}
+
+a, a:hover{
+    text-decoration: none;
+}
+
+input, textarea {
+    padding: 4px;
 }

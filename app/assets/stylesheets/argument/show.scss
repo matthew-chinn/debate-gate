@@ -8,6 +8,10 @@
     font-family: $primary-font;
   }
 
+  .creator{
+    text-align: center;
+  }
+
   .arguments{
     text-align: center;
   }
@@ -18,11 +22,11 @@
 
   h1{
       text-align: center;
-      .For-title{
+      &.For-title{
         color: $favor-color;
       }
 
-      .Against-title{
+      &.Against-title{
         color: $danger-color;
       }
   }

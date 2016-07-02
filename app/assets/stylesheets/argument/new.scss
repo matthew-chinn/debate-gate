@@ -17,5 +17,15 @@ $form-height: 300px;
     height: $form-height;
     @include centered_form($form-width, $form-height);
     top: 30%;
+
+    .form-buttons{
+      text-align: center;
+
+      *{
+        display: inline-block;
+        width: 45%;
+        margin: 8px;
+      }
+    }
   }
 }

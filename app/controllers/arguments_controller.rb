@@ -4,9 +4,12 @@ class ArgumentsController < ApplicationController
   def new
     @debate_id = params[:id]
     @debate = Debate.find(@debate_id)
+    @creator_id = current_user.id
+    @cancel_path = debate_path(@debate_id)
 
     #for counter and supporter arguments
     if params[:argument_id]
+      @cancel_path = argument_path(params[:argument_id])
       @ref_argument_id = params[:argument_id]
       @ref_argument = Argument.find(@ref_argument_id)
       @ref_type = params[:type]
@@ -34,6 +37,13 @@ class ArgumentsController < ApplicationController
     if @created_arg.errors.any?
       flash[:danger] = "New argument could not be made"
       @new_arg = @created_arg
+      @creator_id = current_user.id
+
+      if params[:ref]
+        @ref_argument_id = params[:ref][:id]
+        @ref_type = params[:ref][:id]
+      end
+
       render 'new'
     else #successful creation
       flash[:success] = "Argument created successfully"

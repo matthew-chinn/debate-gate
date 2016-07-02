@@ -28,13 +28,16 @@
     <%= f.text_area :links %>
 
     <!-- change creator id when users created -->
-    <%= hidden_field :argument, :creator_id, value: 1 %>
+    <%= hidden_field :argument, :creator_id, value: @creator_id %>
     <%= hidden_field :argument, :debate_id, value: @debate_id %>
     <%= hidden_field :argument, :proponent, value: @pro %>
     <%= hidden_field :ref, :type, value: @ref_type %>
     <%= hidden_field :ref, :id, value: @ref_argument_id %>
 
-    <%= f.submit "Create", class:"btn submit" %>
+    <div class="form-buttons">
+      <%= f.submit "Create", class:"btn submit" %>
+      <%= link_to "Cancel", "#{@cancel_path}", class:"btn submit" %>
+    </div>
   <% end %>
   </div>
 
