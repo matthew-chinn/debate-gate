@@ -6,5 +6,8 @@ TODO:
 * categories for debates
 * sign in with username
 * welcome/home page display featured debates
-* like/dislike button for arguments
+* favorite/like/dislike button for arguments
 * number arguments based on order given (combined for and against) linked list??
+* mark a counter/supporting argument as a new debate 
+* get rid of individual argument show pages in favor or single scroll debate
+* page

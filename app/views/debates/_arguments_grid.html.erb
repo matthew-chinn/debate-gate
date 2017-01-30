@@ -1,9 +1,11 @@
 <div class="container <%=type%>-arg col-sm-6">
 <!-- TODO: title, preview description, link -->
 <ol class="<%=type%> list">
-  <% arguments.each do |a| %>
-    <li><%= link_to a.title, argument_path(a) %></li>
-  <% end %>
+    <% if arguments %>
+        <% arguments.each do |a| %>
+            <li><%= link_to a.title, argument_path(a) %></li>
+        <% end %>
+    <% end %>
 </ol>
 
 <% word = type == "pro" ? "for" : "against" %>

@@ -1,16 +1,16 @@
 <div class="debate show controller container">
-  <div class="head">
+<div class="head">
     <h1><%= @debate.title %></h1>
     <pre class="description"><%= @debate.description %></pre>
-  </div>
+</div>
 
-  <div class="grid-container">
-  <%= render partial: "arguments_grid", locals: {type: "pro", arguments: @pros } %>
+<div class="grid-container">
+    <%= render partial: "arguments_grid", locals: {type: "pro", arguments: @pros } %>
 
-  <%= render partial: "arguments_grid", locals: {type: "con", arguments: @cons } %>
-  </div>
+    <%= render partial: "arguments_grid", locals: {type: "con", arguments: @cons } %>
+</div>
 
-  <div class="footer buttons">
+<div class="footer buttons">
     <%= link_to "Back to Home", root_path %>
-  </div>
+</div>
 </div>
