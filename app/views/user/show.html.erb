@@ -1,16 +1,16 @@
 <div class="controller container user show">
-  <h1><%= @user.username %></h1>
+  <h1><%= @user.first_name %></h1>
 
   <div class="arguments">
   <% if @arguments.count > 0 %>
-    <h3><%= @user.username %>'s Arguments</h3>
+    <h3><%= @user.first_name %>'s Arguments</h3>
     <ul>
     <% @arguments.each do |a| %>
       <li><%= link_to a.title, argument_path(a) %></li>
     <% end %>
     </ul>
   <% else %>
-    <h3><%= current_user.username %> has no arguments</h3>
+    <h3><%= current_user.first_name %> has no arguments</h3>
   <% end %>
   </div>
 
