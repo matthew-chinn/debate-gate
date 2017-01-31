@@ -1,53 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>DebateGate</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>DebateGate</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-  <div class="header">
-    <h1><a class="title" href="/">DebateGate</a></h1>
-    
-    <% if user_signed_in? %>
+    <div class="header">
+      <h1><a class="title" href="/">DebateGate</a></h1>
+
       <div class="buttons">
-        <%= link_to "Edit Profile", edit_user_registration_path, class:"btn" %>
-        <%= link_to "Logout", destroy_user_session_path, method: 'delete',
-          class:"btn" %>
+        <%= link_to "Browse Debates", debates_path, class: "btn" %>
+        <% if user_signed_in? %>
+          <%= link_to "New Debate", new_debate_path, class: "btn" %>
+          <%= link_to "Edit Profile", edit_user_registration_path, class:"btn" %>
+          <%= link_to "Logout", destroy_user_session_path, method: 'delete',
+            class:"btn" %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: "btn" %>
+          <%= link_to "Signup", new_user_registration_path, class: "btn" %>
+        <% end %>
+      </div>
+    </div>
+
+    <% if flash[:success] or flash[:notice] %>
+      <div class="flash success">
+        <p><%= flash[:success] %></p>
+        <p><%= flash[:notice] %></p>
+      </div>
+    <% elsif flash[:danger] or flash[:alert] %>
+      <div class="flash danger">
+        <p><%= flash[:danger] %></p>
+        <p><%= flash[:alert] %></p>
       </div>
     <% end %>
-  </div>
 
-  <% if flash[:success] or flash[:notice] %>
-    <div class="flash success">
-      <p><%= flash[:success] %></p>
-      <p><%= flash[:notice] %></p>
+    <%= yield %>
+
+    <div class="footer">
+      <div class="citation">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     </div>
-  <% elsif flash[:danger] or flash[:alert] %>
-    <div class="flash danger">
-      <p><%= flash[:danger] %></p>
-      <p><%= flash[:alert] %></p>
-    </div>
-  <% end %>
 
-<%= yield %>
-
-<div class="footer">
-  <!--
-  <%= params.each do |m| %>
-    <p><%= m %></p>
-  <% end %>
-  -->
-  <div class="citation">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-
-  <div class="buttons">
-    <%= link_to "Home", root_path, class: "btn" %>
-    <%= link_to "Browse Debates", debates_path, class: "btn" %>
-    <%= link_to "New Debate", new_debate_path, class: "btn" %>
-  </div>
-</div>
-
-</body>
+  </body>
 </html>
