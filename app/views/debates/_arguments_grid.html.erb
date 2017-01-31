@@ -1,13 +1,25 @@
 <div class="container <%=type%>-arg col-sm-6">
-<!-- TODO: title, preview description, link -->
-<ol class="<%=type%> list">
-    <% if arguments %>
-        <% arguments.each do |a| %>
-            <li><%= link_to a.title, argument_path(a) %></li>
-        <% end %>
-    <% end %>
-</ol>
-
 <% word = type == "pro" ? "for" : "against" %>
 <%= link_to "Create new argument #{word}", new_argument_path(id: @debate, side: "#{type}") %>
+
+<div class="<%=type%> list">
+  <% if arguments %>
+    <% arguments.each_with_index do |a,i| %>
+      <div class="argument" id="arg<%= a.id %>">
+        <div class="title row">
+          <h5><%= i+1 %>. <%= a.title %></h5>
+        </div>
+        <div class="row">
+          <p class="star">&#9734</p>
+          <p class="description"><%= a.description%></p>
+          <div class="buttons">
+            <a class="btn">Supporters</a>
+            <a class="btn">Counters</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
 </div>

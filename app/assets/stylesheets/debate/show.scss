@@ -1,5 +1,8 @@
 @import "components/fonts";
 .debate.show{
+  text-align: center;
+  margin: 8px 0;
+
   .head{
     width: 70%;
     margin: 0 auto;
@@ -16,16 +19,65 @@
     }
   }
 
-  text-align: center;
-  margin: 8px 0;
-
-  ol{
-    list-style-position: inside;
+  .grid-container{
+    width: 90%;
+    margin: 0 auto;
   }
 
-  .grid-container{
-    width: 50%;
-    margin: 0 auto;
+  //the argument lists
+  $list-width: 450px;
+  $row-padding: 5px;
+  $argument-height: 100px;
+  $title-row-height: 35px;
+  $buttons-width: 75px;
+  $star-width: 25px;
+  $description-width: $list-width - $buttons-width - $star-width - $row-padding;
+  $description-height: $argument-height - $title-row-height;
+  .list{
+    width: $list-width;
+
+    .argument{
+      height: $argument-height;
+      border: 1px solid black;
+
+      .row{
+        margin: 0;
+        padding: 0 5px;
+
+        &.title{
+          height: $title-row-height;
+        }
+
+        width: $list-width;
+
+        .star, .description {
+          display: inline-block;
+          vertical-align: top;
+        }
+
+        .star{
+          float: left;
+        }
+
+        .description{
+          width: $description-width;
+          height: $description-height;
+          border: 1px solid black;
+        }
+
+        .buttons{
+          display: inline-block;
+          height: $description-height;
+          width: $buttons-width;
+
+          .btn{
+            height: $description-height / 2;
+            display: block;
+            padding: 0;
+          }
+        }
+      }
+    }
   }
 
 }
