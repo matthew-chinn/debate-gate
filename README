@@ -1,0 +1,19 @@
+README
+
+An application to help facilitate debates. Much still needs to be done.
+
+TODO:
+
+Front-end:
+* Welcome/home page display featured debates
+* Categories for debates (hashtags?)
+* get rid of individual argument show pages in favor or single scroll debate
+* Views under argument controller will be popups for counter/supporter args
+* Make homepage something else, not login screen
+* mobile style
+
+Back-end:
+* Favorite/like/dislike button for arguments
+* Order arguments by Newest/Oldest/Favorited #
+* Character limit for arguments? 
+* Mark a counter/supporting argument as a new debate 
