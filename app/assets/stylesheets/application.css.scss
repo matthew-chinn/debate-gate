@@ -106,20 +106,10 @@ body{
     bottom: 0px;
     background-color: $secondary-color;
     line-height: initial;
+    font-size: 10px;
 
-    .buttons{
-        display: inline-block;
-        float: right;
-
-        a{
-            font-size: 20px;
-            color: $text-color;
-
-            &:hover{
-                background-color: $button-hover-color;
-                color: black;
-            }
-        }
+    p{
+      cursor: default;
     }
 
     .citation{
