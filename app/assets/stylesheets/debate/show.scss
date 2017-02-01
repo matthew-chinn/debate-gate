@@ -1,4 +1,6 @@
 @import "components/fonts";
+@import "components/colors";
+
 .debate.show{
   text-align: center;
   margin: 8px 0;
@@ -22,23 +24,42 @@
   .grid-container{
     width: 90%;
     margin: 0 auto;
+
+    .pro-arg, .con-arg{
+      margin: 0 auto;
+      width: 500px;
+      padding: 15px;
+      display: inline-block;
+      vertical-align: top;
+    }
   }
 
   //the argument lists
-  $list-width: 450px;
+  $list-width: 470px;
+  $list-padding: 10px;
   $row-padding: 5px;
-  $argument-height: 100px;
+  $argument-height: 120px;
+  $argument-padding: 10px;
   $title-row-height: 35px;
   $buttons-width: 75px;
   $star-width: 25px;
-  $description-width: $list-width - $buttons-width - $star-width - $row-padding;
-  $description-height: $argument-height - $title-row-height;
+  $description-width: $list-width - $buttons-width - $star-width - $row-padding
+                      - 2 * $list-padding;
+  $description-height: $argument-height - 2*$argument-padding - $title-row-height;
   .list{
     width: $list-width;
+    padding: $list-padding;
+
+    &.pro{
+      border: 1px solid $favor-color;
+    }
+    &.con{
+      border: 1px solid $opposed-color;
+    }
 
     .argument{
       height: $argument-height;
-      border: 1px solid black;
+      padding: $argument-padding 0;
 
       .row{
         margin: 0;
@@ -46,6 +67,10 @@
 
         &.title{
           height: $title-row-height;
+          
+          *{
+            text-align: left;
+          }
         }
 
         width: $list-width;
@@ -57,12 +82,20 @@
 
         .star{
           float: left;
+          position: relative;
+          right: 2px;
+          top: 15px;
+          cursor: pointer;
         }
 
         .description{
           width: $description-width;
           height: $description-height;
           border: 1px solid black;
+          text-align: left;
+          padding: 5px;
+          overflow: scroll;
+          cursor: default;
         }
 
         .buttons{

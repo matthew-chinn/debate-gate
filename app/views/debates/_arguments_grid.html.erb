@@ -1,11 +1,11 @@
-<div class="container <%=type%>-arg col-sm-6">
+<div class="container <%=type%>-arg ">
 <% word = type == "pro" ? "for" : "against" %>
-<%= link_to "Create new argument #{word}", new_argument_path(id: @debate, side: "#{type}") %>
 
 <div class="<%=type%> list">
+  <%= link_to "Create new argument #{word}", new_argument_path(id: @debate, side: "#{type}") %>
   <% if arguments %>
     <% arguments.each_with_index do |a,i| %>
-      <div class="argument" id="arg<%= a.id %>">
+      <div class="argument" id="<%= type %>-arg<%= a.id %>">
         <div class="title row">
           <h5><%= i+1 %>. <%= a.title %></h5>
         </div>
