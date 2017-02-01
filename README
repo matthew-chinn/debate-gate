@@ -11,9 +11,13 @@ Front-end:
 * Views under argument controller will be popups for counter/supporter args
 * Make homepage something else, not login screen
 * mobile style
+* click on args to see a larger popup view with more space to read description
+* Maybe make a new file to hold all height/width values so can be easily
+  adjusted for mobile?
 
 Back-end:
 * Favorite/like/dislike button for arguments
-* Order arguments by Newest/Oldest/Favorited #
+* Order arguments by Newest/Oldest/Favorited # (assign arguments a counter for
+  what order they were created?)
 * Character limit for arguments? 
 * Mark a counter/supporting argument as a new debate 

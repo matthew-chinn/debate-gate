@@ -25,12 +25,21 @@
     width: 90%;
     margin: 0 auto;
 
+    .pro-arg{
+      border: 1px solid $favor-color;
+    }
+    .con-arg{
+      border: 1px solid $opposed-color;
+    }
+
     .pro-arg, .con-arg{
       margin: 0 auto;
       width: 500px;
+      height: 600px;
       padding: 15px;
       display: inline-block;
       vertical-align: top;
+      overflow: scroll;
     }
   }
 
@@ -49,13 +58,6 @@
   .list{
     width: $list-width;
     padding: $list-padding;
-
-    &.pro{
-      border: 1px solid $favor-color;
-    }
-    &.con{
-      border: 1px solid $opposed-color;
-    }
 
     .argument{
       height: $argument-height;
