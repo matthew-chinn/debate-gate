@@ -1,6 +1,10 @@
 var modal;
+var container; //grid-container in html
+
 $(document).ready(function(){
   modal = $('div#modal');
+  container = $('.grid-container');
+
   $('.other_args').click(function(){
     var type = $(this).attr("arg_type");
     var id = $(this).attr("arg_id");
@@ -28,17 +32,22 @@ function getArgPage(type, id, obj) {
 }
 
 function renderHtml(html, obj, type) {
+  var cancel = '<span id="modal-cancel">X</span>';
   modal.html(html);
+  $(cancel).prependTo(modal);
+
   modal.removeClass("supporting");
   modal.removeClass("counter");
   modal.addClass(type);
 
   var top = $(obj).offset().top;
-  var left = $(obj).offset().left;
-  console.log(top);
-  console.log(left);
   modal.css("top", top);
-  modal.css("left", left);
+  modal.css("left", "40%");
+  modal.show();
+
+  $('#modal-cancel').click(function(){
+    modal.hide();
+  });
 
 }
 

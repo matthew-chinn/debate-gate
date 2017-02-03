@@ -1,14 +1,12 @@
 README
 
-An application to help facilitate debates. Much still needs to be done.
+An application to help facilitate debates. 
 
 TODO:
 
 Front-end:
 * Welcome/home page display featured debates
 * Categories for debates (hashtags?)
-* get rid of individual argument show pages in favor or single scroll debate
-* Views under argument controller will be popups for counter/supporter args
 * Make homepage something else, not login screen
 * mobile style
 * click on args to see a larger popup view with more space to read description
