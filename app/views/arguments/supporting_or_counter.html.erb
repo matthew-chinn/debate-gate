@@ -1,0 +1,21 @@
+<div class="container main-content side-arguments">
+<h3 class="<%= @type %>"><%= @type.capitalize %> for <%= @arg.title %></h3>
+  <span style="display:none" id="type"><%= @type %></span>
+  <%= link_to "Create", new_argument_path(id: @arg.id,
+                                          type: @type, debate_id: @arg.debate_id ) %>
+  <% if @side_arguments and @side_arguments.count > 0 %>
+    <% side = @type == "supporting" ? "pro" : "con" %>
+    <% @side_arguments.each_with_index do |a,i| %>
+      <div class="argument" id="<%= @type %>-arg<%= a.id %>">
+        <div class="title row">
+          <h5><%= i+1 %>. <%= link_to a.title, "##{ side }-arg#{ a.id }" %></h5>
+        </div>
+        <div class="row">
+          <p class="description"><%= a.description%></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No <%= @type %> arguments yet.</p>
+  <% end %>
+</div>

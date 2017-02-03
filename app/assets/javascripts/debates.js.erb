@@ -1,0 +1,44 @@
+var modal;
+$(document).ready(function(){
+  modal = $('div#modal');
+  $('.other_args').click(function(){
+    var type = $(this).attr("arg_type");
+    var id = $(this).attr("arg_id");
+    getArgPage(type,id, this);
+  });
+});
+
+function getArgPage(type, id, obj) {
+  var x = new XMLHttpRequest();
+  x.open("GET", "/argument/" + id + "/other?type=" + type);
+  x.responseType = 'document';
+  x.onload = function() {
+    // Parse and process the response from Google Image Search.
+    html = x.response.children[0];
+    var container = $(html).find('.main-content').html();
+    renderHtml(container, obj, type)
+      return;
+  };
+  x.onerror = function() {
+    renderHtml('<p>Network error.</p>', obj);
+    return;
+  };
+  x.send();
+
+}
+
+function renderHtml(html, obj, type) {
+  modal.html(html);
+  modal.removeClass("supporting");
+  modal.removeClass("counter");
+  modal.addClass(type);
+
+  var top = $(obj).offset().top;
+  var left = $(obj).offset().left;
+  console.log(top);
+  console.log(left);
+  modal.css("top", top);
+  modal.css("left", left);
+
+}
+

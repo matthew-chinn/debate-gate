@@ -2,20 +2,20 @@ class ArgumentsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def new
-    @debate_id = params[:id]
+    @debate_id = params[:debate_id]
     @debate = Debate.find(@debate_id)
     @creator_id = current_user.id
     @cancel_path = debate_path(@debate_id)
 
     #for counter and supporter arguments
-    if params[:argument_id]
-      @cancel_path = argument_path(params[:argument_id])
-      @ref_argument_id = params[:argument_id]
+    if params[:id]
+      @cancel_path = argument_path(params[:id])
+      @ref_argument_id = params[:id]
       @ref_argument = Argument.find(@ref_argument_id)
       @ref_type = params[:type]
 
       @pro = @ref_argument.proponent
-      @pro = @ref_type == "Supporter" ? @pro : !@pro #if counter argument, flip 
+      @pro = @ref_type == "Supporting" ? @pro : !@pro #if counter argument, flip 
     else
       if params[:side] == "pro"
         @pro = true
@@ -46,7 +46,7 @@ class ArgumentsController < ApplicationController
 
       render 'new'
     else #successful creation
-      flash[:success] = "Argument created successfully"
+      #flash[:success] = "Argument created successfully"
 
       @created_arg.update_attribute(:links, @links)
       if supporting_or_counter_arguments?
@@ -64,6 +64,17 @@ class ArgumentsController < ApplicationController
     @supporter_arguments = @arg.supporting_arguments 
     @links = @arg.links
     @links ||= []
+  end
+
+  #view for supporting or counter arguments
+  def supporting_or_counter
+      @arg = Argument.find(params[:id])
+      @type = params[:type] #supporting or counter
+      if @type == "supporting"
+          @side_arguments = @arg.supporting_arguments
+      else #== "counter"
+          @side_arguments = @arg.supporting_arguments
+      end
   end
 
   private

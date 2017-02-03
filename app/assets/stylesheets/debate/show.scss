@@ -55,6 +55,7 @@
   $description-width: $list-width - $buttons-width - $star-width - $row-padding
                       - 2 * $list-padding;
   $description-height: $argument-height - 2*$argument-padding - $title-row-height;
+
   .list{
     width: $list-width;
     padding: $list-padding;
@@ -111,6 +112,31 @@
             padding: 0;
           }
         }
+      }
+    }
+  }
+
+  $modal-width:  450px;
+  #modal{
+    position: absolute;
+    z-index: 100;
+    width: $modal-width;
+    background-color: $off-white-color;
+    height: 400px;
+    overflow: scroll;
+    &.supporting{
+      border: 1px solid $favor-color;
+    }
+    &.counter{
+      border: 1px solid $opposed-color;
+    }
+
+    h3{
+      &.supporting{
+        color: $favor-color;
+      }
+      &.counter{
+        color: $opposed-color;
       }
     }
   }

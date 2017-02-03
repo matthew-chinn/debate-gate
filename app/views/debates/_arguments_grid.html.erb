@@ -2,7 +2,7 @@
 <% word = type == "pro" ? "for" : "against" %>
 
 <div class="<%=type%> list">
-  <%= link_to "Create new argument #{word}", new_argument_path(id: @debate, side: "#{type}") %>
+  <%= link_to "Create new argument #{word}", new_argument_path(debate_id: @debate, side: "#{type}") %>
   <% if arguments %>
     <% arguments.each do |a| %>
       <div class="argument" id="<%= type %>-arg<%= a.id %>">
@@ -13,8 +13,8 @@
           <p class="star">&#9734</p>
           <p class="description"><%= a.description%></p>
           <div class="buttons">
-            <a class="btn">Supporters</a>
-            <a class="btn">Counters</a>
+            <a class="btn other_args" arg_type="supporting" arg_id="<%= a.id %>">Supporters</a>
+            <a class="btn other_args" arg_type="counter" arg_id="<%= a.id %>">Counters</a>
           </div>
         </div>
       </div>

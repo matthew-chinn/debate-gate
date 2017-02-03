@@ -31,12 +31,11 @@ class Argument < ActiveRecord::Base
 
   private
   def add_order
-      puts "HELLO #{self.debate_id}"
-      prev = Argument.where(debate_id: self.debate_id).order("created_at").last.order
-      if not prev
-          prev = 0
+      prev = Argument.where(debate_id: self.debate_id).order("created_at").last
+      order = 1
+      if prev
+          order = prev.order + 1
       end
-      prev++
-      self.order = prev
+      self.order = order
   end
 end

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :arguments
 
   get 'user/:id' => 'user#show', as: :user
+  get 'argument/:id/other' => 'arguments#supporting_or_counter'
 
   # Example resource route with options:
   #   resources :products do
