@@ -69,7 +69,7 @@ class ArgumentsController < ApplicationController
   private
   def arg_params
     params.require(:argument).permit(:title, :description, :creator_id,
-                                     :debate_id, :proponent )
+                                     :debate_id, :proponent, :links )
   end
 
   def supporting_or_counter_arguments?
