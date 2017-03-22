@@ -124,6 +124,8 @@
     background-color: $off-white-color;
     height: 400px;
     overflow: scroll;
+    display: none;
+
     &.supporting{
       border: 1px solid $favor-color;
     }
