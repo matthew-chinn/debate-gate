@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get 'user/:id' => 'user#show', as: :user
   get 'argument/:id/other' => 'arguments#supporting_or_counter'
+  post 'argument/:id/favoritor' => 'arguments#toggle_favoritor'
 
   # Example resource route with options:
   #   resources :products do

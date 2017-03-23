@@ -1,51 +1,44 @@
+var currently_clicked = [];
+
 $(document).ready(function(){
-  $('.star').hover(function(){
-      if( $(this).hasClass("unclicked") ){
-          $(this).html("&#9733");
-      }
-  }, function(){
-      if( $(this).hasClass("unclicked") ){
-          $(this).html("&#9734");
-      }
-  });
+    $('.star').hover(function(){
+        if( $(this).hasClass("unclicked") ){
+            $(this).html("&#9733");
+        }
+    }, function(){
+        if( $(this).hasClass("unclicked") ){
+            $(this).html("&#9734");
+        }
+    });
+
+    $('.star').click(function(){
+        var arg_id = parseInt( $(this).attr("arg_id") );
+        var user_id = parseInt( $(this).attr("user_id") );
+        //only do ajax call if not currently handling
+        if( $.inArray(arg_id, currently_clicked) == -1 ){
+            currently_clicked.push(arg_id);
+            toggleFavoritor(arg_id, user_id, $(this));
+        }
+    });
 });
 
-function getArgPage(type, id, obj) {
-  var x = new XMLHttpRequest();
-  x.open("GET", "/argument/" + id + "/other?type=" + type);
-  x.responseType = 'document';
-  x.onload = function() {
-    // Parse and process the response from Google Image Search.
-    html = x.response.children[0];
-    var container = $(html).find('.main-content').html();
-    renderHtml(container, obj, type)
-      return;
-  };
-  x.onerror = function() {
-    renderHtml('<p>Network error.</p>', obj);
-    return;
-  };
-  x.send();
-
+function toggleFavoritor(arg_id, user_id, obj) {
+    $.ajax({
+        type: "POST",
+        url: "/argument/" + arg_id + "/favoritor",
+        data: { "arg_id": arg_id, "user_id": user_id },
+        success: function(data){
+            if( data === "true" ){
+                obj.addClass("clicked");
+                obj.removeClass("unclicked");
+            }
+            else{
+                obj.addClass("unclicked");
+                obj.removeClass("clicked");
+            }
+        },
+        complete: function(){
+            currently_clicked.splice( $.inArray(arg_id, currently_clicked), 1 );
+        }
+    })
 }
-
-function renderHtml(html, obj, type) {
-  var cancel = '<span id="modal-cancel">X</span>';
-  modal.html(html);
-  $(cancel).prependTo(modal);
-
-  modal.removeClass("supporting");
-  modal.removeClass("counter");
-  modal.addClass(type);
-
-  var top = $(obj).offset().top;
-  modal.css("top", top);
-  modal.css("left", "40%");
-  modal.show();
-
-  $('#modal-cancel').click(function(){
-    modal.hide();
-  });
-
-}
-

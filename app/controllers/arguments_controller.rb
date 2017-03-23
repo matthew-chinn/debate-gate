@@ -77,6 +77,13 @@ class ArgumentsController < ApplicationController
       end
   end
 
+  def toggle_favoritor
+      arg = Argument.find(params[:id])
+      ret = arg.toggle_favoritor(params[:user_id].to_i)
+      puts "FAVORITES: #{arg.favoritors}"
+      render text: "#{ret}"
+  end
+
   private
   def arg_params
     params.require(:argument).permit(:title, :description, :creator_id,

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203050659) do
+ActiveRecord::Schema.define(version: 20170322235616) do
 
   create_table "argument_counters", force: :cascade do |t|
     t.integer "argument_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170203050659) do
     t.integer  "likes"
     t.integer  "dislikes"
     t.integer  "order"
+    t.string   "favoritors"
   end
 
   create_table "debates", force: :cascade do |t|
