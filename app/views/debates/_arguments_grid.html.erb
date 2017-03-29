@@ -12,12 +12,13 @@
         <div class="row">
           <% if user_signed_in? %>
             <!-- If argument is favorited already, then clicked -->
-            <p class="star unclicked" user_id="<%= current_user.id %>" 
-               arg_id="<%= a.id %>">&#9734</p>
-            <!--
-            <p class="star clicked" user_id="<%= current_user.id %>" 
-               arg_id="<%= a.id %>">&#9733</p>
-            -->
+            <% if a.favoritors and a.favoritors.include? current_user.id %>
+              <p class="star clicked" user_id="<%= current_user.id %>" 
+                 arg_id="<%= a.id %>">&#9733</p>
+            <% else %>
+              <p class="star unclicked" user_id="<%= current_user.id %>" 
+                 arg_id="<%= a.id %>">&#9734</p>
+            <% end %>
           <% end %>
 
           <p class="description"><%= a.description%></p>

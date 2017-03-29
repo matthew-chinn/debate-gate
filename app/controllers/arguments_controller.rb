@@ -80,7 +80,7 @@ class ArgumentsController < ApplicationController
   def toggle_favoritor
       arg = Argument.find(params[:id])
       ret = arg.toggle_favoritor(params[:user_id].to_i)
-      puts "FAVORITES: #{arg.favoritors}"
+      puts "#{arg.id} FAVORITES: #{arg.favoritors}"
       render text: "#{ret}"
   end
 

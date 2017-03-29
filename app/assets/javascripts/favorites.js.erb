@@ -14,7 +14,7 @@ $(document).ready(function(){
     $('.star').click(function(){
         var arg_id = parseInt( $(this).attr("arg_id") );
         var user_id = parseInt( $(this).attr("user_id") );
-        //only do ajax call if not currently handling
+        //only do ajax call if not currently handling, synchronization
         if( $.inArray(arg_id, currently_clicked) == -1 ){
             currently_clicked.push(arg_id);
             toggleFavoritor(arg_id, user_id, $(this));
