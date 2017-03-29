@@ -16,7 +16,7 @@
         <%= link_to "Browse Debates", debates_path, class: "btn" %>
         <% if user_signed_in? %>
           <%= link_to "New Debate", new_debate_path, class: "btn" %>
-          <%= link_to "Edit Profile", edit_user_registration_path, class:"btn" %>
+          <%= link_to "Profile", user_path(current_user), class:"btn" %>
           <%= link_to "Logout", destroy_user_session_path, method: 'delete',
             class:"btn" %>
         <% else %>

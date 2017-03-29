@@ -21,12 +21,26 @@ class Argument < ActiveRecord::Base
           ret = false
       else
           self.favoritors = Array.new
-          puts "ADD USER_ID #{user_id}"
           self.favoritors << user_id
           ret = true
       end
       self.save
       return ret
+  end
+
+  #set user favorites appropriately to equal the argument favoritors
+  #iterate through all the favorites
+  def self.calibrate_favorites
+      Argument.all.each do |a|
+          if a.favoritors
+              puts "enter"
+              a.favoritors.each do |user_id|
+                  puts "arg #{a.id} user #{user_id}"
+                  User.find(user_id).on_favorite(a.id)
+              end
+          end
+      end
+      return true
   end
 
   def self.pro_arguments_for(id)

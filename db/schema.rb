@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322235616) do
+ActiveRecord::Schema.define(version: 20170329201056) do
 
   create_table "argument_counters", force: :cascade do |t|
     t.integer "argument_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170322235616) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "favorites"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

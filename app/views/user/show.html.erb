@@ -1,17 +1,32 @@
 <div class="controller container user show">
-  <h1><%= @user.first_name %></h1>
+  <div class="title">
+    <h1 class="inline"><%= @user.first_name %></h1>
+    <a href="<%= edit_user_registration_path %>" class="btn inline"><p>&#x2699;</p></a>
+  </div>
 
   <div class="arguments">
   <% if @arguments.count > 0 %>
-    <h3><%= @user.first_name %>'s Arguments</h3>
+    <h3>Your Arguments</h3>
     <ul>
     <% @arguments.each do |a| %>
+      <li><p class="inline star"><%= a.favoritors.count %>&#9733;</p> <%= link_to a.title, argument_path(a) %> </li>
+    <% end %>
+    </ul>
+  <% else %>
+    <h3>You have no arguments</h3>
+  <% end %>
+  </div>
+
+  <div class="favorites">
+  <% if @favorites and @favorites.count > 0 %>
+    <h3>Your Favorites</h3>
+    <ul>
+    <% @favorites.each do |a| %>
       <li><%= link_to a.title, argument_path(a) %></li>
     <% end %>
     </ul>
   <% else %>
-    <h3><%= current_user.first_name %> has no arguments</h3>
+    <h3>You have no favorited arguments</h3>
   <% end %>
   </div>
-
 </div>

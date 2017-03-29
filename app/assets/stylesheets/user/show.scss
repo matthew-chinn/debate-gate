@@ -1,9 +1,11 @@
+@import "components/colors";
+
 .user.show{
   h1{
     text-align: center;
   }
 
-  .arguments{
+  .arguments, .favorites{
     width: 50%;
     margin: 0 auto;
     h3{
@@ -13,5 +15,9 @@
     li{
       font-size: 20px;
     }
+  }
+
+  .star{
+      color: $star-color;
   }
 }

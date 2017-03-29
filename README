@@ -12,11 +12,9 @@ Front-end:
 * click on args to see a larger popup view with more space to read description
 * Maybe make a new file to hold all height/width values so can be easily
   adjusted for mobile?
-* user profiles contains list of their arguments, and favorited arguments
 * Display links/sources under arguments
 
 Back-end:
-* Favorite/like/dislike button for arguments
 * Order arguments by Newest/Oldest/Favorited # 
 * Character limit for arguments? 
 * Mark a counter/supporting argument as a new debate 

@@ -74,7 +74,7 @@ body{
         display: inline-block;
         line-height: $header-height;
 
-        .title{
+        a.title{
           color: white;
         }
     }
@@ -144,4 +144,13 @@ a, a:hover{
 
 input, textarea {
     padding: 4px;
+}
+
+.inline{
+  display: inline-block;
+}
+
+div.title{
+  margin: 0 auto;
+  text-align: center;
 }
