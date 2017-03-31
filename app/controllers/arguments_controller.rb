@@ -71,7 +71,7 @@ class ArgumentsController < ApplicationController
           @pro = @arg.proponent
       else #string == "counter" argument
           @side_arguments = @arg.supporting_arguments
-          @pro = a@arg.proponent
+          @pro = @arg.proponent
       end
   end
 

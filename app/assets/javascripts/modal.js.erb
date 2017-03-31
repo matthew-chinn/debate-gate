@@ -2,63 +2,72 @@ var modal;
 var container; //grid-container in html
 
 $(document).ready(function(){
-  modal = $('div#modal');
-  container = $('.grid-container');
+    modal = $('div#modal');
+    container = $('.grid-container');
 
-  $('.other_args').click(function(){
-    var type = $(this).attr("arg_type");
-    var id = $(this).attr("arg_id");
-    getArgPage(type,id, this);
-  });
+    $('.other_args').click(function(){
+        var type = $(this).attr("arg_type");
+        var id = $(this).attr("arg_id");
+        getArgPage(type,id, this);
+    });
+
 });
 
 function getArgPage(type, id, obj) {
-  var x = new XMLHttpRequest();
-  x.open("GET", "/argument/" + id + "/other?type=" + type);
-  x.responseType = 'document';
-  x.onload = function() {
-    // Parse and process the response from Google Image Search.
-    html = x.response.children[0];
-    var container = $(html).find('.main-content').html();
-    renderHtml(container, obj, type)
-      return;
-  };
-  x.onerror = function() {
-    renderHtml('<p>Network error.</p>', obj);
-    return;
-  };
-  x.send();
+    var x = new XMLHttpRequest();
+    x.open("GET", "/argument/" + id + "/other?type=" + type);
+    x.responseType = 'document';
+    x.onload = function() {
+        // Parse and process the response from Google Image Search.
+        html = x.response.children[0];
+        var container = $(html).find('.main-content').html();
+        renderHtml(container, obj, type)
+            return;
+    };
+    x.onerror = function() {
+        renderHtml('<p>Network error.</p>', obj);
+        return;
+    };
+    x.send();
 
 }
 
 function renderHtml(html, obj, type) {
-  var cancel = '<span id="modal-cancel">X</span>';
-  modal.html(html);
-  $(cancel).prependTo(modal);
+    var cancel = '<span id="modal-cancel">X</span>';
+    modal.html(html);
+    $(cancel).prependTo(modal);
 
-  modal.removeClass("supporting");
-  modal.removeClass("counter");
-  modal.addClass(type);
+    modal.removeClass("supporting");
+    modal.removeClass("counter");
+    modal.addClass(type);
 
-  var top = $(obj).offset().top;
-  modal.css("top", top);
-  modal.css("left", "40%");
-  $('.new-arg-form').hide(); //start as hidden
-  
-  var modal_width = modal.width();
-  var modal_height = modal.height();
-  $('.new-arg-form').width(modal_width);
-  $('.new-arg-form').height(modal_height);
+    var top = $(obj).offset().top;
+    modal.css("top", top);
+    modal.css("left", "40%");
+    $('.new-arg-form').hide(); //start as hidden
 
-  modal.show();
+    var modal_width = modal.width();
+    var modal_height = modal.height();
+    $('.new-arg-form').width(modal_width);
+    $('.new-arg-form').height(modal_height);
 
-  $('#modal-cancel').click(function(){
-    modal.hide();
-  });
+    modal.show();
 
-  $('.new-arg.btn').click(function(){
-    $(this).css("display", "none");
-    $('.new-arg-form').show();
-  });
+    $(document).click(function(e){
+        if(!$(e.target).closest(modal).length > 0){
+            modal.hide();
+            $(document).off(e);
+        }
+    });
+
+    $('#modal-cancel').click(function(e){
+        modal.hide();
+        $(document).off(e);
+    });
+
+    $('.new-arg.btn').click(function(){
+        $(this).css("display", "none");
+        $('.new-arg-form').show();
+    });
 }
 
