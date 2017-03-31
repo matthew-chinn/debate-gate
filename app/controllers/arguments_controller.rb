@@ -49,10 +49,6 @@ class ArgumentsController < ApplicationController
       #flash[:success] = "Argument created successfully"
 
       @created_arg.update_attribute(:links, @links)
-      if supporting_or_counter_arguments?
-        redirect_to argument_path(@created_arg) and return #new argument
-        #render 'new'
-      end
 
       redirect_to debate_path(@created_arg.debate_id) and return #debate
     end
@@ -72,8 +68,10 @@ class ArgumentsController < ApplicationController
       @type = params[:type] #supporting or counter
       if @type == "supporting"
           @side_arguments = @arg.supporting_arguments
-      else #== "counter"
+          @pro = @arg.proponent
+      else #string == "counter" argument
           @side_arguments = @arg.supporting_arguments
+          @pro = a@arg.proponent
       end
   end
 
