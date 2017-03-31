@@ -1,9 +1,6 @@
 <!-- to be displayed in modal popup after ajax call -->
 <div class="container main-content side-arguments">
-<h3 class="<%= @type %>"><%= @type.capitalize %> for <%= @arg.title %></h3>
   <span style="display:none" id="type"><%= @type %></span>
-  <%= link_to "Create", new_argument_path(id: @arg.id,
-                                          type: @type, debate_id: @arg.debate_id ) %>
   <% if @side_arguments and @side_arguments.count > 0 %>
     <% side = @type == "supporting" ? "pro" : "con" %>
     <% @side_arguments.each_with_index do |a,i| %>
@@ -17,6 +14,32 @@
       </div>
     <% end %>
   <% else %>
-    <p>No <%= @type %> arguments yet.</p>
+    <p>None yet.</p>
   <% end %>
+
+  <% if user_signed_in? %>
+    <a class="new-arg btn" 
+      <%= "arg_id=\"#{@arg.id}\" type=\"#{@type}\" debate_id=\"#{@arg.debate_id}\"" %>>
+      New <%= @type %> argument</a>
+
+    <div class="new-arg-form form">
+        <%= form_tag(arguments_path, method: "post") do %>
+          <%= text_field_tag 'argument[title]', nil, placeholder: "Title" %>
+
+          <%= text_area_tag 'argument[description]', nil, placeholder: "Description" %>
+
+          <%= text_area_tag 'argument[links]', nil, placeholder: "Sources (separate by new line)" %>
+
+          <!-- change creator id when users created -->
+          <%= hidden_field :argument, :creator_id, value: current_user.id %>
+          <%= hidden_field :argument, :debate_id, value: @arg.debate_id %>
+          <%= hidden_field :argument, :proponent, value: @pro %>
+          <%= hidden_field :ref, :type, value: @type %>
+          <%= hidden_field :ref, :id, value: @arg.id %>
+
+          <%= submit_tag "Create", class:"submit" %>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>
