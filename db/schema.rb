@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329201056) do
+ActiveRecord::Schema.define(version: 20170410194039) do
 
   create_table "argument_counters", force: :cascade do |t|
     t.integer "argument_id"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20170329201056) do
     t.integer  "likes"
     t.integer  "dislikes"
     t.integer  "order"
-    t.string   "favoritors"
   end
 
   create_table "debates", force: :cascade do |t|
@@ -44,6 +43,11 @@ ActiveRecord::Schema.define(version: 20170329201056) do
     t.integer  "creator_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "argument_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,7 +65,6 @@ ActiveRecord::Schema.define(version: 20170329201056) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "favorites"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

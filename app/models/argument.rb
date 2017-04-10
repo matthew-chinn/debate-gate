@@ -3,7 +3,6 @@ class Argument < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   serialize :links
-  serialize :favoritors
 
   has_and_belongs_to_many :counter_arguments, class_name: "Argument",
                                               join_table: "argument_counters",
@@ -12,36 +11,8 @@ class Argument < ActiveRecord::Base
   has_and_belongs_to_many :supporting_arguments, class_name: "Argument",
                                                  join_table: "argument_supporters",
                                                  foreign_key: "supporter_id"
+  has_many :favorites
   before_create :add_order
-
-  #returns true if added the user, false if removed
-  def toggle_favoritor(user_id)
-      if self.favoritors != nil and self.favoritors.include? user_id
-          self.favoritors.delete user_id
-          ret = false
-      else
-          self.favoritors = Array.new
-          self.favoritors << user_id
-          ret = true
-      end
-      self.save
-      return ret
-  end
-
-  #set user favorites appropriately to equal the argument favoritors
-  #iterate through all the favorites
-  def self.calibrate_favorites
-      Argument.all.each do |a|
-          if a.favoritors
-              puts "enter"
-              a.favoritors.each do |user_id|
-                  puts "arg #{a.id} user #{user_id}"
-                  User.find(user_id).on_favorite(a.id)
-              end
-          end
-      end
-      return true
-  end
 
   def self.pro_arguments_for(id)
     Argument.where("debate_id = ? AND proponent = ?", id, true)

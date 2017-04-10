@@ -76,13 +76,8 @@ class ArgumentsController < ApplicationController
   end
 
   def toggle_favoritor
-      arg = Argument.find(params[:id])
-      ret = arg.toggle_favoritor(params[:user_id].to_i)
-      user = User.find(params[:user_id])
-      ret2 = user.toggle_favorite(arg.id)
-      puts "#{arg.id} FAVORITES: #{arg.favoritors}"
-      #if ret != ret2, then sync error
-      render text: "#{ret && ret2}"
+      ret = Favorite.toggle( params[:user_id], params[:id] )
+      render text: "#{ret}"
   end
 
   private

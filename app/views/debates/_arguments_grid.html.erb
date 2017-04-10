@@ -12,7 +12,7 @@
         <div class="row">
           <% if user_signed_in? %>
             <!-- If argument is favorited already, then clicked -->
-            <% if a.favoritors and a.favoritors.include? current_user.id %>
+            <% if Favorite.find_by(user_id: current_user.id, argument_id: a.id) %>
               <p class="star clicked" user_id="<%= current_user.id %>" 
                  arg_id="<%= a.id %>">&#9733</p>
             <% else %>
