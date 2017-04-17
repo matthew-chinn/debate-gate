@@ -24,8 +24,8 @@
     <%= f.label :description %>*
     <%= f.text_area :description %>
 
-    <%= f.label :links %><p>Separate by new line</p>
-    <%= f.text_area :links %>
+    <%= label_tag :sources %>
+    <%= text_area_tag :sources, nil, placeholder: "Separate by new line" %>
 
     <!-- change creator id when users created -->
     <%= hidden_field :argument, :creator_id, value: @creator_id %>

@@ -2,7 +2,6 @@ class Argument < ActiveRecord::Base
   belongs_to :debate
   validates :title, presence: true
   validates :description, presence: true
-  serialize :links
 
   has_and_belongs_to_many :counter_arguments, class_name: "Argument",
                                               join_table: "argument_counters",
@@ -12,6 +11,7 @@ class Argument < ActiveRecord::Base
                                                  join_table: "argument_supporters",
                                                  foreign_key: "supporter_id"
   has_many :favorites
+  has_many :sources
   before_create :add_order
 
   def self.pro_arguments_for(id)

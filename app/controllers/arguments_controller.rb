@@ -32,8 +32,6 @@ class ArgumentsController < ApplicationController
     @debate = Debate.find(@debate_id)
     @pro = @created_arg.proponent
 
-    @links = get_links_from_params 
-
     if @created_arg.errors.any?
       flash[:danger] = "New argument could not be made"
       @new_arg = @created_arg
@@ -46,9 +44,7 @@ class ArgumentsController < ApplicationController
 
       render 'new'
     else #successful creation
-      #flash[:success] = "Argument created successfully"
-
-      @created_arg.update_attribute(:links, @links)
+      sources = add_sources_from_params(@created_arg)
 
       redirect_to debate_path(@created_arg.debate_id) and return #debate
     end
@@ -58,8 +54,8 @@ class ArgumentsController < ApplicationController
     @arg = Argument.find(params[:id])
     @counter_arguments = @arg.counter_arguments
     @supporter_arguments = @arg.supporting_arguments 
-    @links = @arg.links
-    @links ||= []
+    @sources = @arg.sources
+    @sources ||= []
   end
 
   #view for supporting or counter arguments
@@ -83,7 +79,7 @@ class ArgumentsController < ApplicationController
   private
   def arg_params
     params.require(:argument).permit(:title, :description, :creator_id,
-                                     :debate_id, :proponent, :links )
+                                     :debate_id, :proponent )
   end
 
   def supporting_or_counter_arguments?
@@ -105,7 +101,10 @@ class ArgumentsController < ApplicationController
   end
 
 
-  def get_links_from_params
-    params[:argument][:links].split("\n").delete_if{|elem| elem.blank?}
+  def add_sources_from_params(arg)
+    strings = params[:sources].split("\n").delete_if{|elem| elem.blank?}
+    strings.each do |s|
+        Source.create!( argument_id: arg.id, url: s )
+    end
   end
 end

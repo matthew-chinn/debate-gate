@@ -14,10 +14,10 @@ u.each do |user|
 end
 
 trump = Debate.create(title: "Trump", description: "Will he Make America Great Again?")
-pro1 = Argument.create!(title: "Yes", description: "He will", proponent: true, links: %w(foxnews.com), debate_id: trump.id, creator_id: users[0].id)
+pro1 = Argument.create!(title: "Yes", description: "He will", proponent: true, debate_id: trump.id, creator_id: users[0].id)
 pro2 = Argument.create!(title: "Also yes", description: "Also he will", proponent: true, debate_id: trump.id, creator_id: users[1].id)
 
-con1 = Argument.create!(title: "No", description: "He won't", proponent: false, links: %w(google.com), debate_id: trump.id, creator_id: users[2].id)
+con1 = Argument.create!(title: "No", description: "He won't", proponent: false, debate_id: trump.id, creator_id: users[2].id)
 con2 = Argument.create!(title: "Also no", description: "Also he won't", proponent: false, debate_id: trump.id, creator_id: users[0].id)
 con3 = Argument.create!(title: "In fact, no", description: "Alternative facts aren't facts", proponent: false, debate_id: trump.id, creator_id: users[1].id)
 
