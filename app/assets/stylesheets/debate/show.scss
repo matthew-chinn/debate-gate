@@ -1,5 +1,6 @@
 @import "components/fonts";
 @import "components/colors";
+@import "components/favorite";
 
 .debate.show{
   text-align: center;
@@ -51,7 +52,6 @@
   $argument-padding: 10px;
   $title-row-height: 35px;
   $buttons-width: 75px;
-  $star-width: 25px;
   $description-width: $list-width - $buttons-width - $star-width - $row-padding
                       - 2 * $list-padding;
   $description-height: $argument-height - 2*$argument-padding - $title-row-height;
@@ -84,13 +84,10 @@
         }
 
         .star{
-          font-size: $star-width;
-          color: $star-color;
-          float: left;
-          position: relative;
-          right: 2px;
-          top: 15px;
-          cursor: pointer;
+            float: left;
+            position: relative;
+            right: 2px;
+            top: 15px;
         }
 
         .description{

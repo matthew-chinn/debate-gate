@@ -1,0 +1,9 @@
+@import "components/colors";
+
+$star-width: 25px;
+
+.star{
+    font-size: $star-width;
+    color: $star-color;
+    cursor: pointer;
+}
