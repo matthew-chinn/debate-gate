@@ -5,9 +5,9 @@
 </div>
 
 <div class="grid-container">
-    <%= render partial: "arguments_grid", locals: {type: "pro", arguments: @pros } %>
+    <%= render partial: "partials/arguments_grid", locals: {type: "pro", arguments: @pros } %>
 
-    <%= render partial: "arguments_grid", locals: {type: "con", arguments: @cons } %>
+    <%= render partial: "partials/arguments_grid", locals: {type: "con", arguments: @cons } %>
 </div>
 
 <div id="modal">

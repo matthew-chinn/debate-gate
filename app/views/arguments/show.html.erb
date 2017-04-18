@@ -6,8 +6,12 @@
 
 <div class="main-chunk">
 
-  <h2><%= @arg.title %></h2>
-  <%= render partial: "partials/favorite", locals: {arg: @arg} %>
+  <div class="title">
+    <h2>
+      <%= @arg.title %>
+      <%= render partial: "partials/favorite", locals: {arg: @arg} %>
+    </h2>
+  </div>
 
   <div class="subtitle">
     <!--

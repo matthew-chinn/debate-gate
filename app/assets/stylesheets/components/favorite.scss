@@ -5,6 +5,8 @@ $star-width: 25px;
 .star{
     font-size: $star-width;
     color: $star-color;
+    width: $star-width;
+    display: inline-block;
 
     &:not(.noclick){
         cursor: pointer;
