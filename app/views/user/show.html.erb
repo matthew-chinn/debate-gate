@@ -9,7 +9,7 @@
     <h3>Your Arguments</h3>
     <ul>
     <% @arguments.each do |a| %>
-      <li><p class="inline star"><%= a.favorites.count %>&#9733;</p> <%= link_to a.title, argument_path(a) %> </li>
+      <li><p class="inline star noclick"><%= a.favorites.count %>&#9733;</p> <%= link_to a.title, argument_path(a) %> </li>
     <% end %>
     </ul>
   <% else %>
@@ -22,7 +22,10 @@
     <h3>Your Favorites</h3>
     <ul>
     <% @favorites.each do |a| %>
-      <li><%= link_to a.title, argument_path(a) %></li>
+      <li>
+        <%= render partial: "partials/favorite", locals: {arg: a} %>
+        <%= link_to a.title, argument_path(a) %>
+      </li>
     <% end %>
     </ul>
   <% else %>

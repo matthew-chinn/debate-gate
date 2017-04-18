@@ -7,11 +7,7 @@
 <div class="main-chunk">
 
   <h2><%= @arg.title %></h2>
-  <div class="like-buttons">
-    <%= image_tag( "icons/up.svg", size: "30x30", class: "thumb-up" ) %>
-    <%= image_tag( "icons/down.svg", size: "30x30", class: "thumb-down" ) %>
-  </div>
-
+  <%= render partial: "partials/favorite", locals: {arg: @arg} %>
 
   <div class="subtitle">
     <!--
@@ -37,8 +33,8 @@
   <% end %>
 </div>
 
-  <%= render partial: "counter_supporter_grid", locals: {type: "supporting", 
+  <%= render partial: "partials/counter_supporter_grid", locals: {type: "supporting", 
                                                          arguments: @supporter_arguments} %>
-  <%= render partial: "counter_supporter_grid", locals: {type: "counter", 
+  <%= render partial: "partials/counter_supporter_grid", locals: {type: "counter", 
                                                          arguments: @counter_arguments} %>
 </div>

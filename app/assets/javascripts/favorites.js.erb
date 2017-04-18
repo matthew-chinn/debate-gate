@@ -1,7 +1,7 @@
 var currently_clicked = [];
 
 $(document).ready(function(){
-    $('.star').hover(function(){
+    $('.star:not(.noclick)').hover(function(){
         if( $(this).hasClass("unclicked") ){
             $(this).html("&#9733");
         }
@@ -11,7 +11,7 @@ $(document).ready(function(){
         }
     });
 
-    $('.star').click(function(){
+    $('.star:not(.noclick)').click(function(){
         var arg_id = parseInt( $(this).attr("arg_id") );
         var user_id = parseInt( $(this).attr("user_id") );
         //only do ajax call if not currently handling, synchronization

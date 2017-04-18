@@ -6,10 +6,7 @@ class UserController < ApplicationController
 
         if user_signed_in? and @user.id == current_user.id
             @arguments = Argument.where(creator_id: @user.id)
-            @favorites = Array.new
-            @user.favorites.each do |fav_id|
-                @favorites << Argument.find(fav_id)
-            end
+            @favorites = @user.favorites.map{ |f| Argument.find(f.argument_id) }
         else
             flash[:alert] = "You are not permitted to view that page"
             redirect_to root_path
