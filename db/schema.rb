@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417220907) do
+ActiveRecord::Schema.define(version: 20170508040923) do
 
   create_table "argument_counters", force: :cascade do |t|
     t.integer "argument_id"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(version: 20170417220907) do
     t.integer  "dislikes"
     t.integer  "order"
   end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_connector", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "debate_id"
+  end
+
+  add_index "category_connector", ["category_id"], name: "index_category_connector_on_category_id"
+  add_index "category_connector", ["debate_id"], name: "index_category_connector_on_debate_id"
 
   create_table "debates", force: :cascade do |t|
     t.string   "title"
