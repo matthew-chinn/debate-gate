@@ -12,6 +12,16 @@ class DebatesController < ApplicationController
 
   def create
     @created_debate = Debate.create(debate_params)
+    
+    #add categories to debate
+    if categories = params[:debate][:categories]
+        categories.each do |c|
+            if c.blank?
+                next
+            end
+            @created_debate.categories << Category.find(c.to_i)
+        end
+    end
 
     if @created_debate.errors.any?
       flash[:danger] = "New debate could not be made"

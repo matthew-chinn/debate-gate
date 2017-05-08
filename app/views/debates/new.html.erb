@@ -18,11 +18,9 @@
       <%= f.label :description%>
       <%= f.text_area :description %>
 
-      <select class="ui fluid search dropdown" multiple="">
-        <% @categories.each do |c| %>
-          <option value="<%= c.id %>"><%= c.name %></option>
-        <% end %>
-      </select>
+      <%= f.collection_select :categories, @categories, :id, :name, 
+          {prompt: "Select category/categories"},
+            class: "ui fluid search dropdown", multiple: "" %>
 
       <!-- change creator id when users created -->
       <%= hidden_field :debate, :creator_id, value: 1 %>

@@ -5,15 +5,15 @@ An application to help facilitate debates.
 TODO:
 
 Front-end:
-* Categories for debates (hashtags?)
 * Make homepage something else, not login screen
 * Welcome/home page display featured debates
-* mobile style
 * click on args to see a larger popup view with more space to read description
 * Display links/sources under arguments
 * optional non-anonymous debate for private debates
+* mobile style, bootstrap vs semantic
 
 Back-end:
+* make new categories
 * Order arguments by Newest/Oldest/Favorited # 
 * Dislike/report button?
 * Character limit for arguments? 
