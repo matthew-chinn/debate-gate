@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
