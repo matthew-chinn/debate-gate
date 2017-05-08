@@ -18,6 +18,12 @@
       <%= f.label :description%>
       <%= f.text_area :description %>
 
+      <select class="ui fluid search dropdown" multiple="">
+        <% @categories.each do |c| %>
+          <option value="<%= c.id %>"><%= c.name %></option>
+        <% end %>
+      </select>
+
       <!-- change creator id when users created -->
       <%= hidden_field :debate, :creator_id, value: 1 %>
       <%= f.submit "Create", class:"btn submit" %>

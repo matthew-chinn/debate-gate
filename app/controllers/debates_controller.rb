@@ -7,6 +7,7 @@ class DebatesController < ApplicationController
 
   def new
     @new_debate = Debate.new
+    @categories = Category.all
   end
 
   def create
