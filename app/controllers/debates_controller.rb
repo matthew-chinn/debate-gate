@@ -2,7 +2,15 @@ class DebatesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @debates = Debate.all
+    if params[:category_id]
+      category = Category.find(params[:category_id])
+      @debates = category.debates
+      @category = category.name
+    else
+      @debates = Debate.all
+      @category = "All"
+    end
+    @categories = Category.all
   end
 
   def new

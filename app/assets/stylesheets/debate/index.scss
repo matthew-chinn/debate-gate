@@ -12,5 +12,15 @@
       padding: 4px;
     }
   }
+
+  .category-sidebar{
+    padding: 0 10px;
+    position: absolute;
+    float: left;
+
+    a{
+      display: block;
+    }
+  }
   
 }

@@ -1,5 +1,13 @@
 <div class="debate index controller container">
-<h2>All Debates</h2>
+<h2><%= @category %> Debates</h2>
+
+<div class="category-sidebar">
+  <h3>Categories</h3>
+  <%= link_to "All", debates_path %>
+  <% @categories.each do |c| %>
+    <%= link_to "#{c.name} (#{c.debates.count})", debates_path(category_id: c.id) %>
+  <% end %>
+</div>
 <% if @debates.count > 0 %>
 <table>
   <tr><td class="col-sm-4">Name</td><td class="col-sm-4">Recent Activity
