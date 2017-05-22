@@ -21,6 +21,7 @@
       <%= f.collection_select :categories, @categories, :id, :name, 
           {prompt: "Select category/categories"},
             class: "ui fluid search dropdown", multiple: "" %>
+      <a id="add-category-btn">+</a>
 
       <!-- change creator id when users created -->
       <%= hidden_field :debate, :creator_id, value: 1 %>

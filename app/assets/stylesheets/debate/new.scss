@@ -15,4 +15,20 @@ $form-height: 200px;
       @include centered_form($form-width, $form-height);
   }
 
+  .ui.fluid.search.dropdown{
+    width: 85%;
+    display: inline-block;
+  }
+
+  #add-category-btn{
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 15px;
+    border: 1px solid black;
+    color: gray;
+    height: 15%;
+    width: 10%;
+    text-align: center;
+    display: inline-block;
+  }
 }
