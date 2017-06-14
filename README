@@ -13,12 +13,12 @@ Front-end:
 * mobile style, bootstrap vs semantic
 
 Back-end:
-* make new categories
 * Order arguments by Newest/Oldest/Favorited # 
 * Dislike/report button?
 * Character limit for arguments? 
 * Mark a counter/supporting argument as a new debate 
 * private debates
+* assets loading slowly
 
 Refactor
 Tests

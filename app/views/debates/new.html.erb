@@ -21,11 +21,34 @@
       <%= f.collection_select :categories, @categories, :id, :name, 
           {prompt: "Select category/categories"},
             class: "ui fluid search dropdown", multiple: "" %>
-      <a id="add-category-btn">+</a>
+          <a type="button" data-toggle="modal" data-target="#myModal"
+            id="add-category-btn">+</a>
 
       <!-- change creator id when users created -->
       <%= hidden_field :debate, :creator_id, value: 1 %>
       <%= f.submit "Create", class:"btn submit" %>
     <% end %>
+  </div>
+
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-sm">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Category</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" placeholder="Category name" 
+            class = "col-sm-8" id="add-category-name">
+          <input class="btn col-sm-4 submit"
+            id="add-category-submit" type="submit">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

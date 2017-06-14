@@ -1,3 +1,43 @@
 $(document).ready(function(){
     $('.dropdown').dropdown();
+
+    $('#add-category-submit').click(function(){
+      var name = $('#add-category-name').val();
+      $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        data: {name: name},
+        url: "/categories",
+        success: function(res){
+          handleSuccess(res);
+        },
+        error: function(req, error){
+          handleError(req, error);
+        }
+      });
+    });
+
+    function handleSuccess(res){
+      $('.flash.container').empty();
+      $('.flash.container').append('<div class="flash success"><p>Successfully added category ' + res.name + '</p></div>');
+      $('.modal').modal('toggle');
+
+      //add to category dropdown
+      $('.menu').append('<div class="item" data-value="' + res.id + '">' + 
+          res.name + '</div>');
+      $('#debate_categories').append('<option value="' + res.id + '">' + res.name
+          + '</option>');
+
+      //set as selected
+      $('.ui.fluid.search.dropdown').dropdown('refresh');
+      $('.ui.fluid.search.dropdown').dropdown('set selected', res.id);
+        
+    }
+
+    function handleError(req, error){
+      $('.flash.container').empty();
+      $('.modal').modal('toggle');
+      console.log(error);
+      $('.flash.container').append('<div class="flash danger"><p>Error adding category</p></div>');
+    }
 });

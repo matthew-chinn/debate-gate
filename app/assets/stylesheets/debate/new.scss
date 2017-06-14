@@ -21,6 +21,7 @@ $form-height: 200px;
   }
 
   #add-category-btn{
+    cursor: pointer;
     padding: 2px;
     border-radius: 5px;
     font-size: 15px;
@@ -30,5 +31,15 @@ $form-height: 200px;
     width: 10%;
     text-align: center;
     display: inline-block;
+
+    &:hover{
+      background-color: #ddd;
+    }
+  }
+
+  .modal-body{
+    input{
+      width: initial;
+    }
   }
 }
